@@ -3,9 +3,411 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journalism and Mass Communication - Faculty of Humanities</title>
-    <link href ="styles.css" rel="stylesheet">
+    <title>African Languages and Literature - Faculty of Humanities</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .top-bar {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+        }
+        
+        .weather-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .weather-container h2 {
+            font-size: 1.1em;
+            margin: 0;
+        }
+        
+        .weather-icon {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .search {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .search input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .search button {
+            padding: 8px 16px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search button:hover {
+            background: #e55a2b;
+        }
+        
+        header {
+            background: white;
+            padding: 20px 5%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .logo-container img {
+            height: 80px;
+            width: auto;
+        }
+        
+        .header-title h1 {
+            color: #1e3c72;
+            font-size: 2.2em;
+            margin-bottom: 5px;
+        }
+        
+        .header-title h2 {
+            color: #666;
+            font-size: 1.3em;
+            font-weight: 400;
+        }
+        
+        .breadcrumb {
+            background: #e9ecef;
+            padding: 15px 5%;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb a {
+            color: #1e3c72;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+           nav {
+    background: #1e3c72;
+    padding: 0 5%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* This is the correct placement */
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+}
+        
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #2a5298;
+            min-width: 280px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .dropdown-content a:hover {
+            background: #1e3c72;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23f4a460" width="1200" height="400"/><g opacity="0.2"><circle cx="300" cy="100" r="80" fill="%238b4513"/><circle cx="900" cy="200" r="120" fill="%23a0522d"/><circle cx="1100" cy="150" r="60" fill="%23ff6b35"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 5%;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 5%;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            color: #1e3c72;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #ff6b35;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: #2a5298;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+        
+        .section p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .faculty-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #a0522d;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .faculty-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .faculty-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 8px;
+        }
+        
+        .faculty-position {
+            color: #a0522d;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .faculty-qualifications {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .sidebar {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #a0522d;
+            padding-bottom: 10px;
+        }
+        
+        .department-nav {
+            list-style: none;
+        }
+        
+        .department-nav li {
+            margin-bottom: 10px;
+        }
+        
+        .department-nav a {
+            color: #666;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+        
+        .department-nav a:hover, .department-nav a.current {
+            background: #f4a460;
+            color: #8b4513;
+            border-left-color: #a0522d;
+        }
+        
+        .stats-box {
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .stats-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .stats-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .programs-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .programs-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            color: #666;
+        }
+        
+        .programs-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .programs-list li:before {
+            content: "✓";
+            color: #a0522d;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 50px 5% 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-title {
+            color: #ff6b35;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+        
+        .footer-grid ul {
+            list-style: none;
+        }
+        
+        .footer-grid ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-grid ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-grid ul li a:hover {
+            color: #ff6b35;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2em;
+            }
+            
+            .faculty-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="top-bar">
@@ -31,28 +433,27 @@
     </header>
 
     <div class="breadcrumb">
-        <a href="/">Faculty of Humanities</a> > Journalism and Mass Communication
+        <a href="javascript:loadPage('faculty')">Faculty of Humanities</a> > African Languages and Literature
     </div>
 
     <nav>
         <ul>
-            <li class="active"><a href="/faculty" data-page="faculty">Home</a></li>
+            <li class="active"><a href="Uneswa.html" data-page="faculty">Home</a></li>
             <li><a href="#about">About Faculty</a></li>
             <li class="dropdown">
                 <a href="#">Departments</a>
                 <div class="dropdown-content">
-                    <!-- New format - can use either JavaScript or direct paths -->
-                    <a href="/acs" data-page="acs">Academic Communication Skills</a>
-                    <a href="/african-lang" data-page="african-lang">African Languages and Literature</a>
-                    <a href="/english" data-page="english">English Language and Literature</a>
-                    <a href="/history" data-page="history">History</a>
-                    <a href="/journalism" data-page="journalism">Journalism and Mass Communication</a>
-                    <a href="/theology" data-page="theology">Theology and Religious Studies</a>
+                    <a href="acs.html" data-page="acs">Academic Communication Skills</a>
+                    <a href="african-lang.html" data-page="african-lang">African Languages and Literature</a>
+                    <a href="eng.html" data-page="english">English Language and Literature</a>
+                    <a href="history.html" data-page="history">History</a>
+                    <a href="journalism.html" data-page="journalism">Journalism and Mass Communication</a>
+                    <a href="theology.html" data-page="theology">Theology and Religious Studies</a>
                 </div>
             </li>
             <li><a href="#faculty-staff">Faculty & Staff</a></li>
 
-            <li><a href="/uneswa-fm" data-page="unesw-fm">UNESWA-FM</a></li>
+            <li><a href="uneswa-fm.html" data-page="uneswa-fm">UNESWA-FM</a></li>
             <li><a href="#programs">Academic Programs</a></li>
             <li><a href="#research">Research</a></li>
             <li class="dropdown">
@@ -69,8 +470,8 @@
 
     <div class="hero">
         <div class="hero-content">
-            <h1>Journalism and Mass Communication</h1>
-            <p>Training the next generation of media professionals in digital age journalism and strategic communication.</p>
+            <h1>African Languages and Literature</h1>
+            <p>Preserving and promoting African linguistic heritage while advancing literary scholarship and cultural studies.</p>
         </div>
     </div>
 
@@ -79,112 +480,114 @@
             <div class="main-section">
                 <div class="section">
                     <h2>About the Department</h2>
-                    <p>The Department of Journalism and Mass Communication is at the forefront of media education in Eswatini. We prepare students for the rapidly evolving media landscape through comprehensive theoretical knowledge and hands-on practical experience.</p>
+                    <p>The Department of African Languages and Literature stands as a guardian of Africa's rich linguistic and literary heritage. We are committed to preserving, studying, and promoting the indigenous languages and literatures of Africa, with special emphasis on Eswatini's cultural traditions.</p>
                     
-                    <p>Our state-of-the-art facilities include multimedia labs, radio studios, and newsrooms that simulate real-world media environments. We emphasize ethical journalism, media literacy, and digital competencies essential for modern media professionals.</p>
+                    <p>Our department plays a crucial role in maintaining cultural identity while preparing students for careers in education, translation, cultural preservation, and literary studies. We bridge the gap between traditional knowledge systems and contemporary academic scholarship.</p>
 
                     <h3>Mission</h3>
-                    <p>To develop competent, ethical, and innovative media professionals who can contribute to informed democracy and effective communication in Eswatini and beyond.</p>
+                    <p>To preserve, study, and promote African languages and literatures while fostering cultural pride and linguistic competence for academic and professional success.</p>
 
                     <h3>Vision</h3>
-                    <p>To be the premier center for journalism and mass communication education in Southern Africa, recognized for excellence in training media professionals and advancing communication research.</p>
+                    <p>To be the premier center for African language and literature studies in Southern Africa, recognized for excellence in cultural preservation and scholarly achievement.</p>
 
-                    <h3>Core Focus Areas</h3>
+                    <h3>Research Focus Areas</h3>
                     <ul class="programs-list">
-                        <li>Digital Journalism and Media Production</li>
-                        <li>Strategic Communication and Public Relations</li>
-                        <li>Media Ethics and Law</li>
-                        <li>Development Communication</li>
-                        <li>Social Media and Digital Marketing</li>
-                        <li>Broadcast Journalism (Radio and Television)</li>
-                        <li>Media Research and Analytics</li>
-                        <li>Documentary and Feature Production</li>
+                        <li>siSwati Language Documentation</li>
+                        <li>African Oral Literature and Traditions</li>
+                        <li>Comparative African Linguistics</li>
+                        <li>Cultural Studies and Identity</li>
+                        <li>Language Policy and Planning</li>
+                        <li>Translation Studies</li>
                     </ul>
-
-                    <div class="uneswa-fm-section">
-                        <h3>UNESWA FM</h3>
-                        <div class="fm-frequency">88.2 FM</div>
-                        <p>Our campus radio station provides students with real-world broadcasting experience while serving the university and wider community with news, education, and entertainment programming.</p>
-                    </div>
                 </div>
 
                 <div class="section">
                     <h2>Academic Programs</h2>
                     <h3>Undergraduate Programs</h3>
                     <ul class="programs-list">
-                        <li>Bachelor of Arts in Journalism and Mass Communication (4-year program)</li>
-                                                <li>Certificate in Media Production</li>
-                                                <li>Certificate in Digital Marketing</li>
+                        <li>BA African Languages and Literature</li>
+                        <li>Certificate in siSwati Language</li>
+                        <li>Diploma in African Cultural Studies</li>
+                        <li>Minor in Indigenous Languages</li>
                     </ul>
 
-                 
+                    <h3>Postgraduate Programs</h3>
+                    <ul class="programs-list">
+                        <li>MA African Languages and Literature</li>
+                        <li>PhD African Linguistics</li>
+                        <li>PhD African Literature</li>
+                    </ul>
 
-                    <div class="special-programs">
-                        <h4>Professional Development Programs</h4>
-                        <ul class="programs-list">
-                            <li>Media Law and Ethics Workshop</li>
-                            <li>Digital Content Creation Bootcamp</li>
-                            <li>Crisis Communication Management</li>
-                            <li>Investigative Journalism Training</li>
-                            <li>Social Media Strategy Certification</li>
-                            <li>Podcast Production Workshop</li>
-                        </ul>
-                    </div>
+                    <h3>Special Programs</h3>
+                    <ul class="programs-list">
+                        <li>Community Language Preservation Project</li>
+                        <li>Digital Archive of Oral Traditions</li>
+                        <li>Teacher Training in African Languages</li>
+                        <li>Translation and Interpretation Services</li>
+                    </ul>
                 </div>
 
                 <div class="section">
                     <h2>Faculty Members</h2>
                     <div class="faculty-grid">
-                       
+                        <div class="faculty-card">
+                            <div class="faculty-name">Position Vacant</div>
+                            <div class="faculty-position">Associate Professor & Head</div>
+                            <div class="faculty-qualifications">Recruitment in Progress</div>
+                        </div>
 
                         <div class="faculty-card">
-                            <div class="faculty-name">M. Mpofu</div>
+                            <div class="faculty-name">Position Vacant</div>
+                            <div class="faculty-position">Associate Professor</div>
+                            <div class="faculty-qualifications">Recruitment in Progress</div>
+                        </div>
+
+                        <div class="faculty-card">
+                            <div class="faculty-name">Senior Lecturer</div>
                             <div class="faculty-position">Senior Lecturer</div>
-                            <div class="faculty-qualifications">B.A. (Hons), Post-Grad. in Media & Comm. (UZ), Post Grad. Media Studies (Oslo), M.A. (Nottingham Trent), Ph.D. (Oslo)</div>
+                            <div class="faculty-qualifications">Specialization in African Literature</div>
                         </div>
 
-                        
-
-                        
-
                         <div class="faculty-card">
-                            <div class="faculty-name">H. Evans</div>
+                            <div class="faculty-name">G. Makaudze</div>
                             <div class="faculty-position">Lecturer</div>
-                            <div class="faculty-qualifications">B.Sc. (Hons) (Zimbabwe), M. Soc. Sc. (UKZN), Ph.D. (UKZN)</div>
+                            <div class="faculty-qualifications">B.A. (Hons.) (UZ), P.G. Dip. (Midlands State University), M.A. (UZ), Ph.D (UNISA)</div>
                         </div>
 
                         <div class="faculty-card">
-                            <div class="faculty-name">S.M. Mohammed</div>
+                            <div class="faculty-name">S. Ndlovu</div>
                             <div class="faculty-position">Lecturer</div>
-                            <div class="faculty-qualifications">B.A., PGCE (UNISWA), M.A. (Brighton)</div>
+                            <div class="faculty-qualifications">B.A. (Hons.) (Gweru), Ph.D (UCT)</div>
                         </div>
 
                         <div class="faculty-card">
-                            <div class="faculty-name">M.V. Mthembu</div>
+                            <div class="faculty-name">S.J. Furvin</div>
                             <div class="faculty-position">Lecturer</div>
-                            <div class="faculty-qualifications">B.A. (UNISWA), M.A. (Natal), Ph.D. (Cardiff)</div>
-                        </div>
-
-                        
-
-                        <div class="faculty-card">
-                            <div class="faculty-name">N.T Ndzinisa</div>
-                            <div class="faculty-position">Lecturer & Head</div>
-                            <div class="faculty-qualifications">B.A. (UNISWA), BASS (Hons), M. Soc. Sc. (UKZN) (Training Leave)</div>
-                        </div>
-
-                        
-
-                        <div class="faculty-card">
-                            <div class="faculty-name">M.N. Mavuso</div>
-                            <div class="faculty-position">Technologist</div>
-                            <div class="faculty-qualifications">B.A. JMC (UNISWA)</div>
+                            <div class="faculty-qualifications">B.A. (Fatima College), M.A. (American College), Ph.D. (Madurai Kamaraj)</div>
                         </div>
 
                         <div class="faculty-card">
-                            <div class="faculty-name">V. Magongo</div>
-                            <div class="faculty-position">Faculty Member</div>
-                            <div class="faculty-qualifications">B.A., M.Ed. (UNISWA) (Training leave)</div>
+                            <div class="faculty-name">F.F. Lukhele</div>
+                            <div class="faculty-position">Lecturer</div>
+                            <div class="faculty-qualifications">B.A. PGCE (UNISWA), M.A. (Stephen F. Austin State), M.A., Ph.D. (Wisconsin-Madison)</div>
+                        </div>
+
+                        <div class="faculty-card">
+                            <div class="faculty-name">G. Malaza</div>
+                            <div class="faculty-position">Lecturer</div>
+                            <div class="faculty-qualifications">STD (William Pitcher College), B.A (UNISWA), M.A (Stellenbosch)</div>
+                        </div>
+
+                        <div class="faculty-card">
+                            <div class="faculty-name">T.P. Mkhatshwa</div>
+                            <div class="faculty-position">Lecturer</div>
+                            <div class="faculty-qualifications">B.A., PGCE (UNISWA), Cert. Gender Relations in International Development, M.A. (Illinois)</div>
+                        </div>
+
+                        <div class="faculty-card">
+                            <div class="faculty-name">T.L. Motjope-Mokhali</div>
+                            <div class="faculty-position">Teaching Assistant</div>
+                            <div class="faculty-qualifications">B.A. (NUL), M.A. (NNMU), PhD. (UNISA)</div>
                         </div>
                     </div>
                 </div>
@@ -192,35 +595,30 @@
 
             <div class="sidebar">
                 <div class="stats-box">
-                    <span class="stats-number">12</span>
+                    <span class="stats-number">9</span>
                     <span class="stats-label">Faculty Members</span>
                 </div>
 
                 <h3>Other Departments</h3>
                 <ul class="department-nav">
                     <li><a href="javascript:loadPage('acs')">Academic Communication Skills</a></li>
-                    <li><a href="javascript:loadPage('african-lang')">African Languages and Literature</a></li>
+                    <li><a href="javascript:loadPage('african-lang')" class="current">African Languages and Literature</a></li>
                     <li><a href="javascript:loadPage('english')">English Language and Literature</a></li>
                     <li><a href="javascript:loadPage('history')">History</a></li>
-                    <li><a href="javascript:loadPage('journalism')" class="current">Journalism and Mass Communication</a></li>
+                    <li><a href="javascript:loadPage('journalism')">Journalism and Mass Communication</a></li>
                     <li><a href="javascript:loadPage('theology')">Theology and Religious Studies</a></li>
                 </ul>
 
-                <div style="margin-top: 30px; padding: 20px; background: #fff5ee; border-radius: 8px;">
-                    <h4 style="color: #dc143c; margin-bottom: 15px;">Quick Contact</h4>
-                    <p style="margin-bottom: 10px; color: #dc143c;"><strong>Department Head:</strong><br>N.T Ndzinisa</p>
-                    <p style="margin-bottom: 10px; color: #dc143c;"><strong>Email:</strong><br>journalism@uneswa.sz</p>
-                    <p style="color: #dc143c;"><strong>Phone:</strong><br>+268 2517 0000</p>
+                <div style="margin-top: 30px; padding: 20px; background: #f4a460; border-radius: 8px; color: #8b4513;">
+                    <h4 style="color: #8b4513; margin-bottom: 15px;">Quick Contact</h4>
+                    <p style="margin-bottom: 10px;"><strong>Department:</strong><br>African Languages & Literature</p>
+                    <p style="margin-bottom: 10px;"><strong>Email:</strong><br>africanling@uneswa.sz</p>
+                    <p><strong>Phone:</strong><br>+268 2517 0000</p>
                 </div>
 
-                <div style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, #ff4500, #ff6b35); border-radius: 8px; color: white;">
-                    <h4 style="margin-bottom: 15px;">UNESWA FM 88.2</h4>
-                    <p style="font-size: 0.9em;">Listen to our campus radio station for student productions, news, and educational programming.</p>
-                </div>
-
-                <div style="margin-top: 20px; padding: 20px; background: #fffacd; border-radius: 8px;">
-                    <h4 style="color: #dc143c; margin-bottom: 15px;">Media Resources</h4>
-                    <p style="color: #666; font-size: 0.9em;">Access our newsroom, studios, editing suites, and digital media labs.</p>
+                <div style="margin-top: 20px; padding: 20px; background: #fff8dc; border-radius: 8px;">
+                    <h4 style="color: #8b4513; margin-bottom: 15px;">Cultural Heritage</h4>
+                    <p style="color: #666; font-size: 0.9em;">Explore our digital archive of Eswatini's oral traditions and literary heritage.</p>
                 </div>
             </div>
         </div>
@@ -239,17 +637,18 @@
             </div>
             <div>
                 <h3 class="footer-title">Contact Information</h3>
-                <p>Journalism and Mass Communication</p>
+                <p>African Languages and Literature</p>
                 <p>Faculty of Humanities</p>
                 <p>University of Eswatini</p>
                 <p>Tel: +268 2517 0000</p>
             </div>
             <div>
-                <h3 class="footer-title">Media Resources</h3>
-                <p>Studios, newsroom, and digital production facilities available for student training.</p>
+                <h3 class="footer-title">Cultural Resources</h3>
+                <p>Access our digital collections and cultural preservation projects.</p>
             </div>
         </div>
     </footer>
+
 
     <script>
         // ======================================
@@ -528,97 +927,7 @@ function loadPage(pageId) {
             }
         }
 
-        // ======================================
-        // 4. SEARCH FUNCTIONALITY
-        // ======================================
-
-        class SearchManager {
-            constructor() {
-                this.searchIndex = this.buildMockSearchIndex();
-                this.setupSearchInterface();
-            }
-
-            buildMockSearchIndex() {
-                return [
-                    { type: 'faculty', department: 'acs', title: 'M.V. Letsoela', content: 'M.V. Letsoela Senior Lecturer Head Academic Communication Skills', url: '?page=acs#faculty-1' },
-                    { type: 'faculty', department: 'journalism', title: 'N.T Ndzinisa', content: 'N.T Ndzinisa Lecturer Head Journalism Mass Communication', url: '?page=journalism#faculty-1' },
-                    { type: 'program', department: 'journalism', title: 'Bachelor of Journalism', content: 'Bachelor Journalism four year comprehensive program media', url: '?page=journalism#programs' },
-                    { type: 'department', department: 'theology', title: 'Theology and Religious Studies', content: 'Interfaith dialogue theological scholarship religious traditions', url: '?page=theology' }
-                ];
-            }
-
-            setupSearchInterface() {
-                const searchInput = document.querySelector('.search input');
-                const searchButton = document.querySelector('.search button');
-
-                if (searchInput && searchButton) {
-                    searchInput.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter') {
-                            this.performSearch(searchInput.value);
-                        }
-                    });
-
-                    searchButton.addEventListener('click', () => {
-                        this.performSearch(searchInput.value);
-                    });
-                }
-            }
-
-            performSearch(query) {
-                if (!query.trim()) return;
-
-                const results = this.searchIndex.filter(item => 
-                    item.content.toLowerCase().includes(query.toLowerCase()) ||
-                    item.title.toLowerCase().includes(query.toLowerCase())
-                );
-
-                this.displaySearchResults(results, query);
-            }
-
-            displaySearchResults(results, query) {
-                const resultsHTML = `
-                    <div class="search-results-overlay" onclick="this.remove()">
-                        <div class="search-results-container" onclick="event.stopPropagation()">
-                            <h2>Search Results for "${query}"</h2>
-                            <div class="results-list">
-                                ${results.length > 0 ? 
-                                    results.map(result => `
-                                        <div class="search-result-item" onclick="window.location.href='${result.url}'; document.querySelector('.search-results-overlay').remove();">
-                                            <h3>${result.title}</h3>
-                                            <p class="result-type">${result.type} - ${result.department}</p>
-                                            <p class="result-snippet">${this.getSnippet(result.content, query)}</p>
-                                        </div>
-                                    `).join('') :
-                                    '<p style="text-align: center; padding: 20px; color: #666;">No results found for your search.</p>'
-                                }
-                            </div>
-                            <div style="text-align: center; margin-top: 20px;">
-                                <button class="cta-button" onclick="document.querySelector('.search-results-overlay').remove()">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                const existingResults = document.querySelector('.search-results-overlay');
-                if (existingResults) {
-                    existingResults.remove();
-                }
-
-                document.body.insertAdjacentHTML('beforeend', resultsHTML);
-            }
-
-            getSnippet(content, query, maxLength = 150) {
-                const queryIndex = content.toLowerCase().indexOf(query.toLowerCase());
-                if (queryIndex === -1) return content.substring(0, maxLength) + '...';
-
-                const start = Math.max(0, queryIndex - 50);
-                const end = Math.min(content.length, queryIndex + query.length + 50);
-                
-                return (start > 0 ? '...' : '') + 
-                       content.substring(start, end) + 
-                       (end < content.length ? '...' : '');
-            }
-        }
+       
 
         // ======================================
         // 5. INITIALIZATION AND GLOBAL FUNCTIONS
