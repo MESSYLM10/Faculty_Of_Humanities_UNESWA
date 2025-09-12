@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="styles.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNESWA FM 88.2</title>
+    <style>
+    /* Variable Definitions */
+:root {
+    --primary: #9b2226;
+    --primary-dark: #660708;
+    --secondary: #00a6a6;
+    --accent: #f48c06;
+    --dark: #1b1b1b;
+    --darker: #0a0a0a;
+    --light: #f4f1de;
+}
+
+ .weather-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .weather-container h2 {
+            font-size: 1.1em;
+            margin: 0;
+        }
+        
+        .weather-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Container for the news strip */
+.news-strip {
+    width: 100%;                /* Full width of the viewport */
+    background-color: red;     /* Dark background color */
+    color: black;               /* Black text */
+    position: relative;         /* Positioning context for the animation */
+    padding: 1.5625rem 0;       /* Changed 25px to 1.5625rem */
+    overflow: hidden;           /* Hide anything that goes outside the container */
+    font-family: 'Arial', sans-serif;
+}
+
+.news-strip p {
+    white-space: nowrap;         /* Prevent text from wrapping */
+    margin: 0;                   /* Remove margin */
+    padding-right: 1.875rem;     /* Changed 30px to 1.875rem */
+    font-size: 0.875rem;         /* Changed 14px to 0.875rem */
+    font-weight: bold;           /* Make the text bold */
+    letter-spacing: 0.125rem;    /* Changed 2px to 0.125rem */
+    text-transform: uppercase;   /* Make text uppercase */
+}
+
+
+.news-items {
+    display: flex;               /* Use flexbox to align items in a row */
+    animation: scrollNews 20s linear infinite; /* Scroll the container */
+}
+/* Keyframes for the scrolling animation */
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, var(--darker) 0%, var(--primary-dark) 100%);
+    color: var(--light);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header & Navigation */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.header-title {
+    margin-left: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background: rgba(155, 34, 38, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(155, 34, 38, 0.3);
+}
+
+nav li {
+    position: relative;
+    padding: 0 1rem;
+}
+
+nav a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(155, 34, 38, 0.5);
+    backdrop-filter: blur(10px);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: var(--light);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background: rgba(155, 34, 38, 0.6);
+}
+
+/* Main Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sections */
+.stations, .player, .info-panel, .recent-tracks {
+    background: rgba(155, 34, 38, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(155, 34, 38, 0.3);
+}
+
+.player {
+    padding: 2rem;
+    text-align: center;
+}
+
+.station-card, .schedule-item, .track-card {
+    background: rgba(155, 34, 38, 0.3);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(155, 34, 38, 0.2);
+}
+
+.station-card:hover, .schedule-item:hover, .track-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.schedule-item:hover {
+    transform: translateX(5px);
+}
+
+/* Player Specific Styles */
+.album-art {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem;
+    border-radius: 1rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    position: relative;
+    overflow: hidden;
+    border: 3px solid var(--accent);
+}
+
+.vinyl-animation {
+    width: 180px;
+    height: 180px;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 5s linear infinite;
+}
+
+.vinyl-animation::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.visualizer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    height: 100px;
+    margin: 2rem 0;
+}
+
+.visualizer-bar {
+    width: 4px;
+    background: var(--secondary);
+    border-radius: 2px;
+    animation: heightChange 0.5s ease infinite alternate; /* Corrected for a better effect */
+}
+
+/* Buttons */
+.listen-btn {
+    text-decoration: none;
+    color: white;
+    background-color: var(--primary);
+    padding: 10px 20px;
+    border-radius: 35px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.listen-btn:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+/* Progress Bar */
+.progress {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.progress-fill {
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 3px;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+/* Recent Tracks */
+.track-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.track-art {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 0.5rem;
+    border: 2px solid var(--accent);
+}
+
+/* Footer */
+.footer {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1rem;
+    background: rgba(155, 34, 38, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    border: 1px solid rgba(155, 34, 38, 0.3);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; /* Align items to the top for better spacing */
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-content h3 {
+    color: var(--accent);
+}
+
+.footer-content p {
+    margin-top: 0.5rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--light);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    background: var(--accent);
+}
+
+.footer-copyright {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(155, 34, 38, 0.3);
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes heightChange {
+    0%, 100% { height: 20px; }
+    50% { height: 80px; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(155, 34, 38, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}</style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="weather-container" id="weather">
+            <h2>Manzini</h2>
+            <img id="weather-icon" class="weather-icon" src="" alt="Weather Icon">
+            <p id="temperature">Loading...</p>
+        </div>
+        <div class="search">
+            <form action="https://www.google.com/search?q=search" method="post">
+                <input type="search" name="q" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="University_of_Eswatini_logo.svg" alt="Logo Image">
+        </div>
+        <div class="header-title">
+            <h1>University of Eswatini</h1>
+            <h2>Department of Journalism and Mass Communication</h2>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li class="active"><a href="/faculty" data-page="faculty">Home</a></li>
+            <li><a href="#about">About Faculty</a></li>
+            <li class="dropdown">
+                <a href="#">Departments</a>
+                <div class="dropdown-content">
+                    <!-- New format - can use either JavaScript or direct paths -->
+                    <a href="/acs" data-page="acs">Academic Communication Skills</a>
+                    <a href="/african-lang" data-page="african-lang">African Languages and Literature</a>
+                    <a href="/english" data-page="english">English Language and Literature</a>
+                    <a href="/history" data-page="history">History</a>
+                    <a href="/journalism" data-page="journalism">Journalism and Mass Communication</a>
+                    <a href="/theology" data-page="theology">Theology and Religious Studies</a>
+                </div>
+            </li>
+            <li><a href="#faculty-staff">Faculty & Staff</a></li>
+
+            <li><a href="/uneswa-fm" data-page="uneswa-fm">UNESWA-FM</a></li>
+            <li><a href="#programs">Academic Programs</a></li>
+            <li><a href="#research">Research</a></li>
+            <li class="dropdown">
+                <a href="#">Student Resources</a>
+                <div class="dropdown-content">
+                    <a href="https://learn.uneswa.ac.sz/login/index.php" target="_blank">UNESWA E-Learning Portal</a>
+                    <a href="http://www.library.uneswa.ac.sz/" target="_blank">Library</a>
+                    <a href="https://kwmail.uneswa.ac.sz/" target="_blank">Email</a>
+                </div>
+            </li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="news-strip">
+            <div class="news-items">
+                <p>Breaking news: Bill Gates uses Arch Linux on his personal computer. Steve Ballmer Shocked. </p>
+                <p>Tech-Tim Cook says Windows is the best OS of all time</p>
+                <p>Business- Poor outlook on the price of fuel going into December.</p>
+                <p>Music- GNX By Kendrick Lamar Drops and Drake sues</p>
+                <p>Weather- Man turns to stone because of the heat in Madlangempisi</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <header class="header">
+                <div class="logo">
+                    <i class="fas fa-broadcast-tower"></i>
+                    UNESWA FM <span class="frequency">88.2</span>
+                </div>
+                <div class="live-indicator">
+                    <div class="pulse"></div>
+                    <span>ON AIR</span>
+                </div>
+            </header>
+
+            <div class="grid">
+                <div class="stations">
+                    <h2><i class="fas fa-list"></i> Programs</h2>
+                    <div class="station-card">
+                        <h3>Morning Drive</h3>
+                        <p>University News & Talk</p>
+                        <small>6:00 - 9:00</small>
+                    </div>
+                    <div class="station-card">
+                        <h3>Academic Hour</h3>
+                        <p>Educational Content</p>
+                        <small>9:00 - 12:00</small>
+                    </div>
+                    <div class="station-card">
+                        <h3>Campus Vibes</h3>
+                        <p>Student Life & Music</p>
+                        <small>12:00 - 15:00</small>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <div class="album-art">
+                        <div class="vinyl-animation"></div>
+                    </div>
+                    <h2>Go Green</h2>
+                    <p>Sakhile</p>
+                    <div class="visualizer">
+                        <div class="visualizer-bar" style="animation-delay: -0.4s"></div>
+                        <div class="visualizer-bar" style="animation-delay: -0.3s"></div>
+                        <div class="visualizer-bar" style="animation-delay: -0.2s"></div>
+                        <div class="visualizer-bar" style="animation-delay: -0.1s"></div>
+                        <div class="visualizer-bar" style="animation-delay: 0s"></div>
+                        <div class="visualizer-bar" style="animation-delay: -0.3s"></div>
+                        <div class="visualizer-bar" style="animation-delay: -0.2s"></div>
+                        <div class="visualizer-bar" style="animation-delay: -0.1s"></div>
+                        <div class="visualizer-bar" style="animation-delay: -0.4s"></div>
+                        <div class="visualizer-bar" style="animation-delay: -0.3s"></div>
+                    </div>
+                    <div>
+                        <a href="https://a9.asurahosting.com/public/uneswa_fm_88.2?fbclid=IwZXh0bgNhZW0CMTEAAR1m4L1r_4Tn_MJd8AYUnv_vvt7hE0dWtxHlRAeFEsa-" target="_blank" class="listen-btn">Listen Live</a>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>1:23</span>
+                        <span>3:45</span>
+                    </div>
+                </div>
+
+                <div class="info-panel">
+                    <h2><i class="fas fa-calendar"></i> Today's Schedule</h2>
+                    <div class="schedule-item">
+                        <h3>Morning Campus News</h3>
+                        <p>University Updates</p>
+                        <small>6:00 - 8:00</small>
+                    </div>
+                    <div class="schedule-item">
+                        <h3>Academic Spotlight</h3>
+                        <p>Faculty Interviews</p>
+                        <small>8:00 - 10:00</small>
+                    </div>
+                    <div class="schedule-item">
+                        <h3>Student Hour</h3>
+                        <p>Campus Life & Events</p>
+                        <small>10:00 - 12:00</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-tracks">
+                <h2><i class="fas fa-history"></i> Recently Discussed</h2>
+                <div class="track-grid">
+                    <div class="track-card">
+                        <div class="track-art"></div>
+                        <div>
+                            <h3>Faculty Interview</h3>
+                            <p>Engineering Department</p>
+                        </div>
+                    </div>
+                    <div class="track-card">
+                        <div class="track-art"></div>
+                        <div>
+                            <h3>Student Achievements</h3>
+                            <p>Awards Ceremony Coverage</p>
+                        </div>
+                    </div>
+                    <div class="track-card">
+                        <div class="track-art"></div>
+                        <div>
+                            <h3>Campus Events</h3>
+                            <p>Upcoming Activities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="contact-info">
+                        <h3>Contact Us</h3>
+                        <p>
+                            <i class="fas fa-phone"></i> +268 2517 0000<br>
+                            <i class="fas fa-envelope"></i> radio@uneswa.ac.sz
+                        </p>
+                    </div>
+                    <div class="social-media">
+                        <h3>Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.facebook.com/RadioUneswa/&ved=2ahUKEwjd6f_zpo6KAxWkWUEAHXwUBGQQFnoECB8QAQ&usg=AOvVaw1DWDKdWpu1EP-1_m510nSC" class="social-icon">FB</a>
+                            <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://twitter.com/uneswafm&ved=2ahUKEwiUnZntqY6KAxWVVkEAHYQaMk4QFnoECBsQAQ&usg=AOvVaw2aLEL35nPOeHn59-u900Q6" class="social-icon">TW</a>
+                            <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.instagram.com/uneswafm/%3Fhl%3Den&ved=2ahUKEwiozKvDqY6KAxUZVkEAHa7VB14QFnoECBkQAQ&usg=AOvVaw00LutXkijvipGKiaznAKHU" class="social-icon">IG</a>
+                            <div class="social-icon">YT</div>
+                        </div>
+                    </div>
+                    <div class="location-info">
+                        <h3>Location</h3>
+                        <p>
+                            <i class="fas fa-map-marker-alt"></i> UNESWA<br>
+                            Kwaluseni Campus, Eswatini
+                        </p>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 UNESWA FM 88.2 - Love at First Sound</p>
+                </div>
+            </footer>
+                <script>
+        // ======================================
+        // COMPLETE FACULTY WEBSITE IMPLEMENTATION
+        // University of Eswatini - Faculty of Humanities
+        // ======================================
+
+        // ======================================
+        // 1. WEATHER API INTEGRATION
+        // ======================================
+
+        class WeatherService {
+            constructor() {
+                this.apiKey = 'YOUR_OPENWEATHERMAP_API_KEY'; // Replace with actual API key
+                this.city = 'Manzini';
+                this.apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.apiKey}&units=metric`;
+            }
+
+            async fetchWeatherData() {
+                try {
+                    const response = await fetch(this.apiURL);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    return {
+                        temperature: data.main.temp,
+                        description: data.weather[0].description,
+                        iconCode: data.weather[0].icon,
+                        iconURL: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+                    };
+                } catch (error) {
+                    console.error('Weather API Error:', error);
+                    return {
+                        temperature: 22, // Fallback temperature
+                        description: 'Pleasant',
+                        iconCode: '01d',
+                        iconURL: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFD700"><circle cx="12" cy="12" r="5"/></svg>'
+                    };
+                }
+            }
+
+            async updateWeatherDisplay() {
+                const weatherData = await this.fetchWeatherData();
+                
+                const temperatureElement = document.getElementById('temperature');
+                const iconElement = document.getElementById('weather-icon');
+                
+                if (temperatureElement) {
+                    temperatureElement.textContent = `${Math.round(weatherData.temperature)}°C`;
+                }
+                
+                if (iconElement) {
+                    iconElement.src = weatherData.iconURL;
+                    iconElement.alt = weatherData.description;
+                }
+            }
+
+            startWeatherUpdates() {
+                this.updateWeatherDisplay();
+                setInterval(() => {
+                    this.updateWeatherDisplay();
+                }, 600000); // Update every 10 minutes
+            }
+        }
+
+        // ======================================
+        // 2. NAVIGATION SYSTEM WITH ROUTING
+        // ======================================
+
+       class NavigationManager {
+    constructor() {
+        this.currentPage = 'faculty';
+        this.pages = {
+            'faculty': { title: 'Faculty of Humanities', breadcrumb: 'Faculty of Humanities' },
+            'acs': { title: 'Academic Communication Skills', breadcrumb: 'Faculty of Humanities > Academic Communication Skills' },
+            'african-lang': { title: 'African Languages and Literature', breadcrumb: 'Faculty of Humanities > African Languages and Literature' },
+            'english': { title: 'English Language and Literature', breadcrumb: 'Faculty of Humanities > English Language and Literature' },
+            'history': { title: 'History Department', breadcrumb: 'Faculty of Humanities > History' },
+            'journalism': { title: 'Journalism and Mass Communication', breadcrumb: 'Faculty of Humanities > Journalism and Mass Communication' },
+            'theology': { title: 'Theology and Religious Studies', breadcrumb: 'Faculty of Humanities > Theology and Religious Studies' }
+        };
+        
+        this.init();
+    }
+
+    init() {
+        window.addEventListener('popstate', (event) => {
+            if (event.state && event.state.page) {
+                this.loadPage(event.state.page, false);
+            } else {
+                this.handleDeepLinking();
+            }
+        });
+
+        this.handleDeepLinking();
+    }
+
+    handleDeepLinking() {
+        // Extract page from pathname instead of query parameters
+        const pathSegments = window.location.pathname.split('/').filter(segment => segment);
+        let targetPage = pathSegments[0] || 'faculty';
+        
+        // Handle common path variations
+        if (targetPage === 'humanities') {
+            targetPage = 'faculty';
+        }
+        
+        if (this.pages[targetPage]) {
+            this.loadPage(targetPage, false);
+        } else {
+            // Redirect unknown paths to faculty home
+            this.loadPage('faculty', true);
+        }
+    }
+
+    async loadPage(pageId, updateHistory = true) {
+        if (!this.pages[pageId]) {
+            console.error(`Page ${pageId} not found`);
+            return;
+        }
+
+        try {
+            this.showLoadingState();
+            
+            this.currentPage = pageId;
+            const page = this.pages[pageId];
+
+            document.title = `${page.title} - University of Eswatini`;
+            this.updateNavigation(pageId);
+
+            // Simulate content loading
+            await new Promise(resolve => setTimeout(resolve, 300));
+
+            if (updateHistory) {
+                // Use path-based routing instead of query parameters
+                const newURL = pageId === 'faculty' ? '/' : `/${pageId}`;
+                window.history.pushState({ page: pageId }, page.title, newURL);
+            }
+
+            this.hideLoadingState();
+            this.showPageLoadNotification(page.title);
+
+            if (sessionManager) {
+                sessionManager.updateCurrentPage(pageId);
+            }
+
+        } catch (error) {
+            console.error('Error loading page:', error);
+            this.hideLoadingState();
+        }
+    }
+
+    updateNavigation(activePageId) {
+        // Remove active class from all nav items
+        document.querySelectorAll('nav li').forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // Add active class to current page
+        const activeLink = document.querySelector(`nav a[data-page="${activePageId}"]`);
+        if (activeLink) {
+            activeLink.closest('li').classList.add('active');
+        }
+
+        // Handle dropdown navigation
+        document.querySelectorAll('.department-nav a').forEach(link => {
+            link.classList.remove('current');
+        });
+
+        const currentDropdownLink = document.querySelector(`.department-nav a[href*="${activePageId}"]`);
+        if (currentDropdownLink) {
+            currentDropdownLink.classList.add('current');
+        }
+    }
+
+    showLoadingState() {
+        // Add a subtle loading indicator
+        document.body.style.opacity = '0.8';
+        document.body.style.pointerEvents = 'none';
+    }
+
+    hideLoadingState() {
+        document.body.style.opacity = '1';
+        document.body.style.pointerEvents = 'auto';
+    }
+
+    showPageLoadNotification(pageTitle) {
+        // Update page title and breadcrumbs dynamically
+        console.log(`Navigated to: ${pageTitle}`);
+        
+        // Update breadcrumb if element exists
+        const breadcrumb = document.querySelector('.breadcrumb');
+        if (breadcrumb && this.pages[this.currentPage]) {
+            breadcrumb.innerHTML = this.pages[this.currentPage].breadcrumb;
+        }
+    }
+}
+
+// Updated search index with path-based URLs
+const updatedSearchIndex = [
+    { type: 'faculty', department: 'acs', title: 'M.V. Letsoela', content: 'M.V. Letsoela Senior Lecturer Head Academic Communication Skills', url: '/acs#faculty-1' },
+    { type: 'faculty', department: 'journalism', title: 'N.T Ndzinisa', content: 'N.T Ndzinisa Lecturer Head Journalism Mass Communication', url: '/journalism#faculty-1' },
+    { type: 'program', department: 'journalism', title: 'Bachelor of Journalism', content: 'Bachelor Journalism four year comprehensive program media', url: '/journalism#programs' },
+    { type: 'department', department: 'theology', title: 'Theology and Religious Studies', content: 'Interfaith dialogue theological scholarship religious traditions', url: '/theology' }
+];
+
+// Global loadPage function updated for path routing
+function loadPage(pageId) {
+    if (navigationManager) {
+        navigationManager.loadPage(pageId);
+    }
+}
+
+        // ======================================
+        // 3. SESSION MANAGEMENT
+        // ======================================
+
+        class SessionManager {
+            constructor() {
+                this.sessionKey = 'uneswa_faculty_session';
+                this.init();
+            }
+
+            init() {
+                if (!this.getSession()) {
+                    this.createSession();
+                }
+                this.updateLastActivity();
+            }
+
+            createSession() {
+                const session = {
+                    id: this.generateSessionId(),
+                    startTime: new Date().toISOString(),
+                    lastActivity: new Date().toISOString(),
+                    currentPage: 'faculty',
+                    visitedPages: ['faculty'],
+                    preferences: { theme: 'default', language: 'en' }
+                };
+
+                localStorage.setItem(this.sessionKey, JSON.stringify(session));
+                return session;
+            }
+
+            getSession() {
+                const sessionData = localStorage.getItem(this.sessionKey);
+                return sessionData ? JSON.parse(sessionData) : null;
+            }
+
+            updateCurrentPage(pageId) {
+                const session = this.getSession();
+                if (session) {
+                    if (!session.visitedPages.includes(pageId)) {
+                        session.visitedPages.push(pageId);
+                    }
+
+                    session.currentPage = pageId;
+                    session.lastActivity = new Date().toISOString();
+                    localStorage.setItem(this.sessionKey, JSON.stringify(session));
+                }
+            }
+
+            updateLastActivity() {
+                const session = this.getSession();
+                if (session) {
+                    session.lastActivity = new Date().toISOString();
+                    localStorage.setItem(this.sessionKey, JSON.stringify(session));
+                }
+            }
+
+            generateSessionId() {
+                return 'sess_' + Date.now() + '_' + Math.random().toString(36).substring(2, 15);
+            }
+        }
+
+        // ======================================
+        // 4. SEARCH FUNCTIONALITY
+        // ======================================
+
+        class SearchManager {
+            constructor() {
+                this.searchIndex = this.buildMockSearchIndex();
+                this.setupSearchInterface();
+            }
+
+            buildMockSearchIndex() {
+                return [
+                    { type: 'faculty', department: 'acs', title: 'M.V. Letsoela', content: 'M.V. Letsoela Senior Lecturer Head Academic Communication Skills', url: '?page=acs#faculty-1' },
+                    { type: 'faculty', department: 'journalism', title: 'N.T Ndzinisa', content: 'N.T Ndzinisa Lecturer Head Journalism Mass Communication', url: '?page=journalism#faculty-1' },
+                    { type: 'program', department: 'journalism', title: 'Bachelor of Journalism', content: 'Bachelor Journalism four year comprehensive program media', url: '?page=journalism#programs' },
+                    { type: 'department', department: 'theology', title: 'Theology and Religious Studies', content: 'Interfaith dialogue theological scholarship religious traditions', url: '?page=theology' }
+                ];
+            }
+
+            setupSearchInterface() {
+                const searchInput = document.querySelector('.search input');
+                const searchButton = document.querySelector('.search button');
+
+                if (searchInput && searchButton) {
+                    searchInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.performSearch(searchInput.value);
+                        }
+                    });
+
+                    searchButton.addEventListener('click', () => {
+                        this.performSearch(searchInput.value);
+                    });
+                }
+            }
+
+            performSearch(query) {
+                if (!query.trim()) return;
+
+                const results = this.searchIndex.filter(item => 
+                    item.content.toLowerCase().includes(query.toLowerCase()) ||
+                    item.title.toLowerCase().includes(query.toLowerCase())
+                );
+
+                this.displaySearchResults(results, query);
+            }
+
+            displaySearchResults(results, query) {
+                const resultsHTML = `
+                    <div class="search-results-overlay" onclick="this.remove()">
+                        <div class="search-results-container" onclick="event.stopPropagation()">
+                            <h2>Search Results for "${query}"</h2>
+                            <div class="results-list">
+                                ${results.length > 0 ? 
+                                    results.map(result => `
+                                        <div class="search-result-item" onclick="window.location.href='${result.url}'; document.querySelector('.search-results-overlay').remove();">
+                                            <h3>${result.title}</h3>
+                                            <p class="result-type">${result.type} - ${result.department}</p>
+                                            <p class="result-snippet">${this.getSnippet(result.content, query)}</p>
+                                        </div>
+                                    `).join('') :
+                                    '<p style="text-align: center; padding: 20px; color: #666;">No results found for your search.</p>'
+                                }
+                            </div>
+                            <div style="text-align: center; margin-top: 20px;">
+                                <button class="cta-button" onclick="document.querySelector('.search-results-overlay').remove()">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                const existingResults = document.querySelector('.search-results-overlay');
+                if (existingResults) {
+                    existingResults.remove();
+                }
+
+                document.body.insertAdjacentHTML('beforeend', resultsHTML);
+            }
+
+            getSnippet(content, query, maxLength = 150) {
+                const queryIndex = content.toLowerCase().indexOf(query.toLowerCase());
+                if (queryIndex === -1) return content.substring(0, maxLength) + '...';
+
+                const start = Math.max(0, queryIndex - 50);
+                const end = Math.min(content.length, queryIndex + query.length + 50);
+                
+                return (start > 0 ? '...' : '') + 
+                       content.substring(start, end) + 
+                       (end < content.length ? '...' : '');
+            }
+        }
+
+        // ======================================
+        // 5. INITIALIZATION AND GLOBAL FUNCTIONS
+        // ======================================
+
+        let weatherService;
+        let navigationManager;
+        let sessionManager;
+        let searchManager;
+
+        // Global loadPage function for backward compatibility
+        function loadPage(pageId) {
+            if (navigationManager) {
+                navigationManager.loadPage(pageId);
+            }
+        }
+
+        // Smooth scrolling utility
+        function smoothScrollTo(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Mobile navigation toggle
+        function toggleMobileNav() {
+            const nav = document.querySelector('nav ul');
+            if (nav) {
+                nav.classList.toggle('mobile-active');
+            }
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                console.log('Initializing Faculty of Humanities website...');
+                
+                weatherService = new WeatherService();
+                navigationManager = new NavigationManager();
+                sessionManager = new SessionManager();
+                searchManager = new SearchManager();
+
+                weatherService.startWeatherUpdates();
+
+                console.log('Faculty website fully initialized');
+            } catch (error) {
+                console.error('Initialization error:', error);
+            }
+        });
+    </script>
+        </div>
+    </main>
+</body>
+</html>
