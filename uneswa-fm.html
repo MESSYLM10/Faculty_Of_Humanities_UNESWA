@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNESWA FM 88.2</title>
+
     <style>/* Variable Definitions */
 :root {
     --primary: #9b2226;
@@ -69,6 +70,8 @@ header {
     padding: 1.5rem;
     margin-bottom: 2rem;
     text-align: center;
+    position: relative; /* Essential for positioning the menu-toggle */
+    z-index: 1000; /* Added to keep it on top */
 }
 
 .header-title {
@@ -344,6 +347,12 @@ nav a:hover {
     margin-top: 1rem;
 }
 
+.track-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .track-art {
     width: 50px;
     height: 50px;
@@ -409,23 +418,7 @@ nav a:hover {
     border-top: 1px solid rgba(155, 34, 38, 0.3);
 }
 
-
-.fas fa-bars menu-toggle {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-            }
-
-.fas fa-bars menu-toggle {
-            display: none;
-            background: #1e3c72;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }            
+      
 /* Animations */
 @keyframes scrollNews {
     from {
@@ -470,23 +463,30 @@ nav a:hover {
     background: var(--accent);
 }
 
-/* Responsive Media Queries */
-@media (max-width: 1024px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
+/* Corrected Mobile Menu Toggle Styles */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: var(--primary-dark);
+    color: var(--light);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.5rem;
 }
-
 @media (max-width: 768px) {
+    /* Main Layout Adjustments */
     .grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+
     header {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
+
     .header-title {
         margin: 1rem 0 0;
     }
@@ -499,33 +499,44 @@ nav a:hover {
     /* Mobile Navigation */
     .menu-toggle {
         display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    nav {
+        /* This is the key change to make the menu overlay the header */
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9); /* Dark overlay */
+        display: none; /* Hide by default */
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    nav.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     nav ul {
         flex-direction: column;
-        position: absolute;
-        top: 0;
-        right: 0;
         width: 70%;
-        height: 100vh;
+        padding: 2rem; /* Spacing between menu items */
         background: var(--primary-dark);
+        border-radius: 1rem;
         border: none;
-        border-radius: 0;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        justify-content: flex-start;
-        padding-top: 5rem;
-        z-index: 999;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
     
-    nav ul.active {
-        transform: translateX(0);
-    }
-
     nav ul li {
         width: 100%;
         text-align: center;
-        padding: 0;
+        padding: 1rem 0; /* Add vertical spacing here */
     }
 
     nav ul li a {
@@ -533,6 +544,7 @@ nav a:hover {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
+    /* Corrected dropdown for mobile */
     .dropdown-content {
         position: static;
         width: 100%;
@@ -546,7 +558,13 @@ nav a:hover {
     .dropdown-content a {
         padding-left: 30px;
     }
-}</style>
+    
+    /* Search Input Fix */
+    .search input {
+        min-width: 150px;
+    }
+}
+</style>
     </head>
 <body>
     <div class="top-bar">
@@ -565,7 +583,7 @@ nav a:hover {
 
     <header>
 
-    <button class="fas fa-bars menu-toggle"></button>
+    <button class="fas fa-bars menu-toggle">☰ </button>
         <div class="logo-container">
             <img src="University_of_Eswatini_logo.svg" alt="University of Eswatini Logo">
         </div>
@@ -578,7 +596,7 @@ nav a:hover {
 
 
     <nav>
-        <ul>
+        <ul class="nav-links">
             <li class="active"><a href="Uneswa.html" data-page="faculty">Home</a></li>
             <li><a href="journalism.html">About Faculty</a></li>
             
@@ -646,9 +664,11 @@ nav a:hover {
                         <div class="visualizer-bar" style="animation-delay: -0.4s"></div>
                         <div class="visualizer-bar" style="animation-delay: -0.3s"></div>
                     </div>
-                    <div>
-                        <a href="https://a9.asurahosting.com/public/uneswa_fm_88.2?fbclid=IwZXh0bgNhZW0CMTEAAR1m4L1r_4Tn_MJd8AYUnv_vvt7hE0dWtxHlRAeFEsa-" target="_blank" class="listen-btn">Listen Live</a>
-                    </div>
+                   <div>
+    <audio id="audioPlayer" src="https://a9.asurahosting.com/listen/uneswa_fm_88.2/radio.mp3" type="audio/mpeg"></audio>
+
+    <button id="playPauseBtn" class="listen-btn">Listen Live</button>
+</div>
                     <div class="progress">
                         <div class="progress-fill"></div>
                     </div>

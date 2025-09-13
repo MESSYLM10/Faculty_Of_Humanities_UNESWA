@@ -814,3 +814,30 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.error('Initialization error:', error);
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('.menu-toggle');
+    const navBar = document.querySelector('nav'); // Select the parent <nav> element
+
+    if (mobileMenuToggle && navBar) {
+        mobileMenuToggle.addEventListener('click', function() {
+            navBar.classList.toggle('active'); // Toggles the 'active' class on the <nav>
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+
+    if (audioPlayer && playPauseBtn) {
+        playPauseBtn.addEventListener('click', function() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseBtn.textContent = 'Pause';
+            } else {
+                audioPlayer.pause();
+                playPauseBtn.textContent = 'Listen Live';
+            }
+        });
+    }
+});

@@ -4,114 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journalism and Mass Communication - Faculty of Humanities</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-        
-        .top-bar {
-            background: linear-gradient(135deg,#ff6b35,#ff6b35 100%);
-            color: white;
-            padding: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 5%;
-        }
-        
-        .weather-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .weather-container h2 {
-            font-size: 1.1em;
-            margin: 0;
-        }
-        
-        .weather-icon {
-            width: 30px;
-            height: 30px;
-        }
-        
-        .search {
-            display: flex;
-            gap: 5px;
-        }
-        
-        .search input {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 4px;
-            outline: none;
-        }
-        
-        .search button {
-            padding: 8px 16px;
-            background: #ff6b35;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .search button:hover {
-            background: #e55a2b;
-        }
-        
-        header {
-            background: white;
-            padding: 20px 5%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .logo-container img {
-            height: 80px;
-            width: auto;
-        }
-        
-        .header-title h1 {
-            color: #1e3c72;
-            font-size: 2.2em;
-            margin-bottom: 5px;
-        }
-        
-        .header-title h2 {
-            color: #666;
-            font-size: 1.3em;
-            font-weight: 400;
-        }
-        
-        .breadcrumb {
-            background: #e9ecef;
-            padding: 15px 5%;
-            font-size: 0.9em;
-        }
-        
-        .breadcrumb a {
-            color: #1e3c72;
-            text-decoration: none;
-        }
-        
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-        
-           nav {
+<style>
+/* Base Styles for all screen sizes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.top-bar {
+    background: linear-gradient(135deg,#ff6b35,#ff6b35 100%);
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+.weather-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.weather-container h2 {
+    font-size: 1.1em;
+    margin: 0;
+}
+
+.weather-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.search {
+    display: flex;
+    gap: 5px;
+}
+
+.search input {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+}
+
+.search button {
+    padding: 8px 16px;
+    background: #ff6b35;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search button:hover {
+    background: #e55a2b;
+}
+
+header {
+    background: white;
+    padding: 20px 5%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo-container img {
+    height: 80px;
+    width: auto;
+}
+
+.header-title h1 {
+    color: #1e3c72;
+    font-size: 2.2em;
+    margin-bottom: 5px;
+}
+
+.header-title h2 {
+    color: #666;
+    font-size: 1.3em;
+    font-weight: 400;
+}
+
+.breadcrumb {
+    background: #e9ecef;
+    padding: 15px 5%;
+    font-size: 0.9em;
+}
+
+.breadcrumb a {
+    color: #1e3c72;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+nav {
     background: #ff6b35;
     padding: 0 5%;
 }
@@ -120,7 +121,7 @@ nav ul {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* This is the correct placement */
+    justify-content: center;
 }
 
 nav ul li {
@@ -133,298 +134,322 @@ nav ul li a {
     padding: 15px 20px;
     display: block;
 }
-        
-        .dropdown-content {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #660708;
-            min-width: 280px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            display: none;
-            z-index: 1000;
-        }
-        
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        
-        .dropdown-content a {
-            padding: 12px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .dropdown-content a:hover {
-            background: #660708;
-        }
-        
-        .hero {
-            background:#ff6b35;
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 80px 5%;
-            text-align: center;
-        }
-        
-        .hero-content h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .hero-content p {
-            font-size: 1.2em;
-            margin-bottom: 25px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-        
-        .main-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 5%;
-        }
-        
-        .content-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        
-        .section {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-        
-        .section h2 {
-            color: #1e3c72;
-            font-size: 2em;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #ff6b35;
-            padding-bottom: 10px;
-        }
-        
-        .section h3 {
-            color: #2a5298;
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            margin-top: 25px;
-        }
-        
-        .section p {
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-        
-        .faculty-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .faculty-card {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid #ff6b35;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .faculty-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        
-        .faculty-name {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #1e3c72;
-            margin-bottom: 8px;
-        }
-        
-        .faculty-position {
-            color: #ff6b35;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .faculty-qualifications {
-            font-size: 0.9em;
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .sidebar {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-        
-        .sidebar h3 {
-            color: #1e3c72;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #ff6b35;
-            padding-bottom: 10px;
-        }
-        
-        .department-nav {
-            list-style: none;
-        }
-        
-        .department-nav li {
-            margin-bottom: 10px;
-        }
-        
-        .department-nav a {
-            color: #666;
-            text-decoration: none;
-            padding: 10px 15px;
-            display: block;
-            border-radius: 5px;
-            transition: all 0.3s;
-            border-left: 3px solid transparent;
-        }
-        
-        .department-nav a:hover, .department-nav a.current {
-            background: #f0f8ff;
-            color: #1e3c72;
-            border-left-color: #ff6b35;
-        }
-        
-        .stats-box {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        
-        .stats-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .stats-label {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-        
-        .programs-list {
-            list-style: none;
-            margin-top: 20px;
-        }
-        
-        .programs-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-            color: #666;
-        }
-        
-        .programs-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .programs-list li:before {
-            content: "✓";
-            color: #ff6b35;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        
-        footer {
-            background: #1e3c72;
-            color: white;
-            padding: 50px 5% 30px;
-            margin-top: 60px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .footer-title {
-            color: #ff6b35;
-            font-size: 1.3em;
-            margin-bottom: 20px;
-        }
-        
-        .footer-grid ul {
-            list-style: none;
-        }
-        
-        .footer-grid ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-grid ul li a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-grid ul li a:hover {
-            color: #ff6b35;
-        }
-        
 
-.mobile-menu-toggle {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-            }
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #660708;
+    min-width: 280px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    display: none;
+    z-index: 1000;
+}
 
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown-content a:hover {
+    background: #660708;
+}
+
+.hero {
+    background:#ff6b35;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 5%;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.section {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    color: #1e3c72;
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #ff6b35;
+    padding-bottom: 10px;
+}
+
+.section h3 {
+    color: #2a5298;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+.section p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.faculty-card {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid #ff6b35;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.faculty-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.faculty-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #1e3c72;
+    margin-bottom: 8px;
+}
+
+.faculty-position {
+    color: #ff6b35;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.faculty-qualifications {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.5;
+}
+
+.sidebar {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar h3 {
+    color: #1e3c72;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ff6b35;
+    padding-bottom: 10px;
+}
+
+.department-nav {
+    list-style: none;
+}
+
+.department-nav li {
+    margin-bottom: 10px;
+}
+
+.department-nav a {
+    color: #666;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 5px;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.department-nav a:hover, .department-nav a.current {
+    background: #f0f8ff;
+    color: #1e3c72;
+    border-left-color: #ff6b35;
+}
+
+.stats-box {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.stats-number {
+    font-size: 2.5em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.stats-label {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.programs-list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.programs-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    color: #666;
+}
+
+.programs-list li:last-child {
+    border-bottom: none;
+}
+
+.programs-list li:before {
+    content: "✓";
+    color: #ff6b35;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+footer {
+    background: #1e3c72;
+    color: white;
+    padding: 50px 5% 30px;
+    margin-top: 60px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-title {
+    color: #ff6b35;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+
+.footer-grid ul {
+    list-style: none;
+}
+
+.footer-grid ul li {
+    margin-bottom: 10px;
+}
+
+.footer-grid ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-grid ul li a:hover {
+    color: #ff6b35;
+}
+
+/* Corrected Menu Toggle Styles */
+/* This rule is for desktop view */
 .mobile-menu-toggle {
-            display: none;
-            background: #1e3c72;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }            
-        @media (max-width: 768px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.2em;
-            }
-            
-            .faculty-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-        }
-    </style>
+    display: none;
+    background: #1e3c72;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* This is the media query for mobile/tablet screens */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.2em;
+    }
+    
+    .faculty-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        flex-direction: column;
+        text-align: center;
+        /* Add position relative here to make the toggle position absolute correctly */
+        position: relative; 
+    }
+    
+     .top-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    nav ul {
+        flex-direction: column;
+        /* Hide the menu on mobile by default */
+        display: none; 
+    }
+
+    .search input {
+        min-width: 150px;
+    }
+
+    /* Make the button visible and positioned on mobile */
+    .mobile-menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 100;
+    }
+
+    /* This class will be toggled by JavaScript to show the menu */
+    nav ul.mobile-active {
+    display: flex;
+    flex-direction: column;
+    background-color: #1e3c72;
+}
+}
+</style>
         
 </head>
 <body>

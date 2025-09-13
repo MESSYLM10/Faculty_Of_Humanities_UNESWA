@@ -385,15 +385,8 @@ nav ul li a {
             color: #ff6b35;
         }
         
-
-.mobile-menu-toggle {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-            }
-
-.mobile-menu-toggle {
+/* FIXED: Single mobile menu toggle rule */
+        .mobile-menu-toggle {
             display: none;
             background: #1e3c72;
             color: white;
@@ -401,27 +394,62 @@ nav ul li a {
             padding: 10px;
             border-radius: 4px;
             cursor: pointer;
-        }            
+        }
+        
+        /* CONSOLIDATED: Single mobile media query with all rules */
         @media (max-width: 768px) {
+            /* Top bar mobile layout */
+            .top-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            /* Search input mobile sizing */
+            .search input {
+                min-width: 150px;
+            }
+            
+            /* Content grid mobile */
             .content-grid {
                 grid-template-columns: 1fr;
             }
             
+            /* Hero mobile */
             .hero-content h1 {
                 font-size: 2.2em;
             }
             
+            /* Faculty grid mobile */
             .faculty-grid {
                 grid-template-columns: 1fr;
             }
             
+            /* Header mobile layout */
             header {
                 flex-direction: column;
                 text-align: center;
             }
             
+            /* FIXED: Hide nav menu by default on mobile */
             nav ul {
                 flex-direction: column;
+                display: none;
+            }
+            
+            /* FIXED: Show mobile menu toggle on mobile */
+            .mobile-menu-toggle {
+                display: block;
+                position: absolute;
+                top: 120px;
+                right: 30px;
+                z-index: 100;
+            }
+            
+            /* FIXED: Show nav menu when active (correct selector) */
+            nav ul.mobile-active {
+                display: flex;
+                flex-direction: column;
+                background-color: #1e3c72;
             }
         }
     </style>
