@@ -5,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Academic Communication Skills - Faculty of Humanities</title>
     <style>
+        /* Hide the button on larger screens */
+.mobile-menu-toggle {
+    display: none;
+}
+
+/* Hide the menu by default on mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #1e3c72;
+    }
+    
+    /* Make the button visible on mobile */
+    .mobile-menu-toggle {
+        display: block;
+        background: #1e3c72;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    /* When active, show the menu */
+    .nav-links.mobile-active {
+        display: flex;
+    }
+}
         * {
             margin: 0;
             padding: 0;
@@ -639,6 +669,6 @@ nav ul li a {
     </footer>
 
 
-  <script src="script.js" ></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
