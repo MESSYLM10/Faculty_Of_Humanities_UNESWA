@@ -409,6 +409,23 @@ nav a:hover {
     border-top: 1px solid rgba(155, 34, 38, 0.3);
 }
 
+
+.fas fa-bars menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+
+.fas fa-bars menu-toggle {
+            display: none;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }            
 /* Animations */
 @keyframes scrollNews {
     from {
@@ -547,6 +564,8 @@ nav a:hover {
     </div>
 
     <header>
+
+    <button class="fas fa-bars menu-toggle"></button>
         <div class="logo-container">
             <img src="University_of_Eswatini_logo.svg" alt="University of Eswatini Logo">
         </div>
@@ -556,34 +575,13 @@ nav a:hover {
         </div>
     </header>
 
-    <i class="fas fa-bars menu-toggle"></i>
+
+
     <nav>
         <ul>
             <li class="active"><a href="Uneswa.html" data-page="faculty">Home</a></li>
-            <li><a href="#about">About Faculty</a></li>
-            <li class="dropdown">
-                <a href="#">Departments</a>
-                <div class="dropdown-content">
-                    <a href="acs.html" data-page="acs">Academic Communication Skills</a>
-                    <a href="african-lang.html" data-page="african-lang">African Languages and Literature</a>
-                    <a href="eng.html" data-page="english">English Language and Literature</a>
-                    <a href="history.html" data-page="history">History</a>
-                    <a href="journalism.html" data-page="journalism">Journalism and Mass Communication</a>
-                    <a href="theology.html" data-page="theology">Theology and Religious Studies</a>
-                </div>
-            </li>
-            <li><a href="#faculty-staff">Faculty & Staff</a></li>
-            <li><a href="uneswa-fm.html" data-page="uneswa-fm">UNESWA-FM</a></li>
-            <li><a href="#programs">Academic Programs</a></li>
-            <li><a href="#research">Research</a></li>
-            <li class="dropdown">
-                <a href="#">Student Resources</a>
-                <div class="dropdown-content">
-                    <a href="https://learn.uneswa.ac.sz/login/index.php" target="_blank">UNESWA E-Learning Portal</a>
-                    <a href="http://www.library.uneswa.ac.sz/" target="_blank">Library</a>
-                    <a href="https://kwmail.uneswa.ac.sz/" target="_blank">Email</a>
-                </div>
-            </li>
+            <li><a href="journalism.html">About Faculty</a></li>
+            
             <li><a href="#contact">Contact Us</a></li>
         </ul>
     </nav>
@@ -738,72 +736,7 @@ nav a:hover {
                 </div>
             </footer>
     </main>
-    <script>
-        // All JavaScript moved to a separate file for cleaner separation.
-        document.addEventListener('DOMContentLoaded', function() {
-    // Weather Service
-    class WeatherService {
-        constructor() {
-            this.apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
-            this.city = 'Manzini';
-            this.apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.apiKey}&units=metric`;
-        }
-        async fetchWeatherData() {
-            try {
-                const response = await fetch(this.apiURL);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                const data = await response.json();
-                return {
-                    temperature: data.main.temp,
-                    description: data.weather[0].description,
-                    iconCode: data.weather[0].icon,
-                    iconURL: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-                };
-            } catch (error) {
-                console.error('Weather API Error:', error);
-                return {
-                    temperature: 22,
-                    description: 'Pleasant',
-                    iconCode: '01d',
-                    iconURL: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFD700"><circle cx="12" cy="12" r="5"/></svg>'
-                };
-            }
-        }
-        async updateWeatherDisplay() {
-            const weatherData = await this.fetchWeatherData();
-            const temperatureElement = document.getElementById('temperature');
-            const iconElement = document.getElementById('weather-icon');
-            if (temperatureElement) {
-                temperatureElement.textContent = `${Math.round(weatherData.temperature)}°C`;
-            }
-            if (iconElement) {
-                iconElement.src = weatherData.iconURL;
-                iconElement.alt = weatherData.description;
-            }
-        }
-        startWeatherUpdates() {
-            this.updateWeatherDisplay();
-            setInterval(() => {
-                this.updateWeatherDisplay();
-            }, 600000);
-        }
-    }
-    
-    // Mobile Menu Toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navUl = document.querySelector('nav ul');
-    if (menuToggle && navUl) {
-        menuToggle.addEventListener('click', () => {
-            navUl.classList.toggle('active');
-        });
-    }
 
-    // Initialize services
-    const weatherService = new WeatherService();
-    weatherService.startWeatherUpdates();
-});
-    </script>
+  <script src="script.js" defer></script>
 </body>
 </html>

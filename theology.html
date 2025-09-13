@@ -427,6 +427,24 @@ nav ul li a {
         .footer-grid ul li a:hover {
             color: #ff6b35;
         }
+
+
+.mobile-menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+
+.mobile-menu-toggle {
+            display: none;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }            
         
         @media (max-width: 768px) {
             .content-grid {
@@ -479,6 +497,7 @@ nav ul li a {
         </div>
     </header>
 
+        <button class="mobile-menu-toggle" onclick="toggleMobileNav()">☰ Menu</button>
     <div class="breadcrumb">
         <a href="javascript:loadPage('faculty')">Faculty of Humanities</a> > Theology and Religious Studies
     </div>
@@ -703,315 +722,7 @@ nav ul li a {
             </div>
         </div>
     </footer>
-    <script>
-        // ======================================
-        // COMPLETE FACULTY WEBSITE IMPLEMENTATION
-        // University of Eswatini - Faculty of Humanities
-        // ======================================
 
-        // ======================================
-        // 1. WEATHER API INTEGRATION
-        // ======================================
-
-        class WeatherService {
-            constructor() {
-                this.apiKey = 'YOUR_OPENWEATHERMAP_API_KEY'; // Replace with actual API key
-                this.city = 'Manzini';
-                this.apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.apiKey}&units=metric`;
-            }
-
-            async fetchWeatherData() {
-                try {
-                    const response = await fetch(this.apiURL);
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    
-                    const data = await response.json();
-                    return {
-                        temperature: data.main.temp,
-                        description: data.weather[0].description,
-                        iconCode: data.weather[0].icon,
-                        iconURL: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-                    };
-                } catch (error) {
-                    console.error('Weather API Error:', error);
-                    return {
-                        temperature: 22, // Fallback temperature
-                        description: 'Pleasant',
-                        iconCode: '01d',
-                        iconURL: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFD700"><circle cx="12" cy="12" r="5"/></svg>'
-                    };
-                }
-            }
-
-            async updateWeatherDisplay() {
-                const weatherData = await this.fetchWeatherData();
-                
-                const temperatureElement = document.getElementById('temperature');
-                const iconElement = document.getElementById('weather-icon');
-                
-                if (temperatureElement) {
-                    temperatureElement.textContent = `${Math.round(weatherData.temperature)}°C`;
-                }
-                
-                if (iconElement) {
-                    iconElement.src = weatherData.iconURL;
-                    iconElement.alt = weatherData.description;
-                }
-            }
-
-            startWeatherUpdates() {
-                this.updateWeatherDisplay();
-                setInterval(() => {
-                    this.updateWeatherDisplay();
-                }, 600000); // Update every 10 minutes
-            }
-        }
-
-        // ======================================
-        // 2. NAVIGATION SYSTEM WITH ROUTING
-        // ======================================
-
-        class NavigationManager {
-            constructor() {
-                this.currentPage = 'faculty';
-                this.pages = {
-                    'faculty': { title: 'Faculty of Humanities', breadcrumb: 'Faculty of Humanities' },
-                    'acs': { title: 'Academic Communication Skills', breadcrumb: 'Faculty of Humanities > Academic Communication Skills' },
-                    'african-lang': { title: 'African Languages and Literature', breadcrumb: 'Faculty of Humanities > African Languages and Literature' },
-                    'english': { title: 'English Language and Literature', breadcrumb: 'Faculty of Humanities > English Language and Literature' },
-                    'history': { title: 'History Department', breadcrumb: 'Faculty of Humanities > History' },
-                    'journalism': { title: 'Journalism and Mass Communication', breadcrumb: 'Faculty of Humanities > Journalism and Mass Communication' },
-                    'theology': { title: 'Theology and Religious Studies', breadcrumb: 'Faculty of Humanities > Theology and Religious Studies' }
-                };
-                
-                this.init();
-            }
-
-            init() {
-                window.addEventListener('popstate', (event) => {
-                    if (event.state && event.state.page) {
-                        this.loadPage(event.state.page, false);
-                    }
-                });
-
-                this.handleDeepLinking();
-            }
-
-            handleDeepLinking() {
-                const urlParams = new URLSearchParams(window.location.search);
-                const pageParam = urlParams.get('page');
-                const hashPage = window.location.hash.substring(1);
-                
-                let targetPage = pageParam || hashPage || 'faculty';
-                
-                if (this.pages[targetPage]) {
-                    this.loadPage(targetPage, false);
-                } else {
-                    this.loadPage('faculty', false);
-                }
-            }
-
-            async loadPage(pageId, updateHistory = true) {
-                if (!this.pages[pageId]) {
-                    console.error(`Page ${pageId} not found`);
-                    return;
-                }
-
-                try {
-                    this.showLoadingState();
-                    
-                    this.currentPage = pageId;
-                    const page = this.pages[pageId];
-
-                    document.title = `${page.title} - University of Eswatini`;
-                    this.updateNavigation(pageId);
-
-                    // Simulate content loading
-                    await new Promise(resolve => setTimeout(resolve, 500));
-
-                    if (updateHistory) {
-                        const newURL = `${window.location.pathname}?page=${pageId}`;
-                        window.history.pushState({ page: pageId }, page.title, newURL);
-                    }
-
-                    this.hideLoadingState();
-
-                    // Show success notification
-                    this.showPageLoadNotification(page.title);
-
-                    if (sessionManager) {
-                        sessionManager.updateCurrentPage(pageId);
-                    }
-
-                } catch (error) {
-                    console.error('Error loading page:', error);
-                    this.hideLoadingState();
-                }
-            }
-
-            updateNavigation(activePageId) {
-                document.querySelectorAll('nav a').forEach(link => {
-                    link.classList.remove('active');
-                });
-
-                const activeLink = document.querySelector(`nav a[data-page="${activePageId}"]`);
-                if (activeLink) {
-                    activeLink.closest('li').classList.add('active');
-                }
-
-                document.querySelectorAll('.dropdown-content a').forEach(link => {
-                    link.classList.remove('current');
-                });
-
-                const currentDropdownLink = document.querySelector(`.dropdown-content a[data-page="${activePageId}"]`);
-                if (currentDropdownLink) {
-                    currentDropdownLink.classList.add('current');
-                }
-            }
-
-            showLoadingState() {
-                const loader = document.getElementById('loading-overlay');
-                if (loader) {
-                    loader.style.display = 'flex';
-                }
-            }
-
-            hideLoadingState() {
-                const loader = document.getElementById('loading-overlay');
-                if (loader) {
-                    loader.style.display = 'none';
-                }
-            }
-
-            showPageLoadNotification(pageTitle) {
-                // Simple notification - could be enhanced with toast notifications
-                console.log(`Loaded: ${pageTitle}`);
-            }
-        }
-
-        // ======================================
-        // 3. SESSION MANAGEMENT
-        // ======================================
-
-        class SessionManager {
-            constructor() {
-                this.sessionKey = 'uneswa_faculty_session';
-                this.init();
-            }
-
-            init() {
-                if (!this.getSession()) {
-                    this.createSession();
-                }
-                this.updateLastActivity();
-            }
-
-            createSession() {
-                const session = {
-                    id: this.generateSessionId(),
-                    startTime: new Date().toISOString(),
-                    lastActivity: new Date().toISOString(),
-                    currentPage: 'faculty',
-                    visitedPages: ['faculty'],
-                    preferences: { theme: 'default', language: 'en' }
-                };
-
-                localStorage.setItem(this.sessionKey, JSON.stringify(session));
-                return session;
-            }
-
-            getSession() {
-                const sessionData = localStorage.getItem(this.sessionKey);
-                return sessionData ? JSON.parse(sessionData) : null;
-            }
-
-            updateCurrentPage(pageId) {
-                const session = this.getSession();
-                if (session) {
-                    if (!session.visitedPages.includes(pageId)) {
-                        session.visitedPages.push(pageId);
-                    }
-
-                    session.currentPage = pageId;
-                    session.lastActivity = new Date().toISOString();
-                    localStorage.setItem(this.sessionKey, JSON.stringify(session));
-                }
-            }
-
-            updateLastActivity() {
-                const session = this.getSession();
-                if (session) {
-                    session.lastActivity = new Date().toISOString();
-                    localStorage.setItem(this.sessionKey, JSON.stringify(session));
-                }
-            }
-
-            generateSessionId() {
-                return 'sess_' + Date.now() + '_' + Math.random().toString(36).substring(2, 15);
-            }
-        }
-
-        // ======================================
-        // 4. SEARCH FUNCTIONALITY
-        // ======================================
-
-        
-
-        // ======================================
-        // 5. INITIALIZATION AND GLOBAL FUNCTIONS
-        // ======================================
-
-        let weatherService;
-        let navigationManager;
-        let sessionManager;
-        let searchManager;
-
-        // Global loadPage function for backward compatibility
-        function loadPage(pageId) {
-            if (navigationManager) {
-                navigationManager.loadPage(pageId);
-            }
-        }
-
-        // Smooth scrolling utility
-        function smoothScrollTo(elementId) {
-            const element = document.getElementById(elementId);
-            if (element) {
-                element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
-        // Mobile navigation toggle
-        function toggleMobileNav() {
-            const nav = document.querySelector('nav ul');
-            if (nav) {
-                nav.classList.toggle('mobile-active');
-            }
-        }
-
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', async function() {
-            try {
-                console.log('Initializing Faculty of Humanities website...');
-                
-                weatherService = new WeatherService();
-                navigationManager = new NavigationManager();
-                sessionManager = new SessionManager();
-                searchManager = new SearchManager();
-
-                weatherService.startWeatherUpdates();
-
-                console.log('Faculty website fully initialized');
-            } catch (error) {
-                console.error('Initialization error:', error);
-            }
-        });
-    </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
