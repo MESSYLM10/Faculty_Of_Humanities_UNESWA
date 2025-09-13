@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty of Humanities - University of Eswatini</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .top-bar {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+        }
+        
+        .weather-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .weather-container h2 {
+            font-size: 1.1em;
+            margin: 0;
+        }
+        
+        .weather-icon {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .search {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .search input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            min-width: 200px;
+        }
+        
+        .search button {
+            padding: 8px 16px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search button:hover {
+            background: #e55a2b;
+        }
+        
+        header {
+            background: white;
+            padding: 20px 5%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .logo-container img {
+            height: 80px;
+            width: auto;
+        }
+        
+        .header-title h1 {
+            color: #1e3c72;
+            font-size: 2.2em;
+            margin-bottom: 5px;
+        }
+        
+        .header-title h2 {
+            color: #666;
+            font-size: 1.3em;
+            font-weight: 400;
+        }
+          nav {
+    background: #1e3c72;
+    padding: 0 5%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* This is the correct placement */
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+}
+        
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #2a5298;
+            min-width: 280px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .dropdown-content a:hover, .dropdown-content a.current {
+            background: #1e3c72;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f8ff" width="1200" height="600"/><g opacity="0.1"><circle cx="200" cy="150" r="100" fill="%231e3c72"/><circle cx="800" cy="400" r="150" fill="%232a5298"/><circle cx="1000" cy="200" r="80" fill="%23ff6b35"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 5%;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .cta-button {
+            background: #ff6b35;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        #main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 5%;
+        }
+        
+        .section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            color: #1e3c72;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .department-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .department-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .department-header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .department-header h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        
+        .department-body {
+            padding: 25px;
+        }
+        
+        .department-body p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .staff-count {
+            background: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            color: #1e3c72;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .department-button {
+            background: #ff6b35;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            font-size: 1em;
+        }
+        
+        .department-button:hover {
+            background: #e55a2b;
+        }
+        
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #1e3c72;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Search Results Modal */
+        .search-results-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .search-results-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .search-results-container h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+        }
+        
+        .search-result-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-result-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .search-result-item h3 {
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+        
+        .result-type {
+            color: #ff6b35;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .result-snippet {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 50px 5% 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-title {
+            color: #ff6b35;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+        .footer-grid ul {
+            list-style: none;
+        }
+        
+        .footer-grid ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-grid ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-grid ul li a:hover {
+            color: #ff6b35;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .search input {
+                min-width: 150px;
+            }
+            
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                display: none;
+            }
+            
+            nav ul.mobile-active {
+                display: flex;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            
+            .departments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-results-container {
+                margin: 20px;
+                max-width: calc(100% - 40px);
+            }
+        }
+        
+        /* Error states */
+        .error {
+            border: 2px solid #dc3545 !important;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        /* Success states */
+        .success {
+            border: 2px solid #28a745 !important;
+        }
+        
+        .success-message {
+            color: #28a745;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="top-bar">
+        <div class="weather-container" id="weather">
+            <h2>Manzini</h2>
+           
+    <img id="weather-icon" class="weather-icon" src="" alt="Weather Icon"><p id="temperature">Loading...</p>
+        </div>
+        <div class="search">
+            <input type="search" placeholder="Search faculty, programs, departments...">
+            <button>Search</button>
+        </div>
+    </div>
+
+    <header>
+        <button class="mobile-menu-toggle" onclick="toggleMobileNav()">☰ Menu</button>
+        <div class="logo-container">
+            <img src="University_of_Eswatini_logo.svg" alt="University of Eswatini Logo">
+        </div>
+        <div class="header-title">
+            <h1>University of Eswatini</h1>
+            <h2>Faculty of Humanities</h2>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li class="active"><a href="indexGIT.html" data-page="faculty">Home</a></li>
+            <li><a href="#about">About Faculty</a></li>
+            <li class="dropdown">
+                <a href="#">Departments</a>
+                <div class="dropdown-content">
+                    <a href="acs.html" data-page="acs">Academic Communication Skills</a>
+                    <a href="african-lang.html" data-page="african-lang">African Languages and Literature</a>
+                    <a href="eng.html" data-page="english">English Language and Literature</a>
+                    <a href="history.html" data-page="history">History</a>
+                    <a href="journalism.html" data-page="journalism">Journalism and Mass Communication</a>
+                    <a href="theology.html" data-page="theology">Theology and Religious Studies</a>
+                </div>
+            </li>
+            <li><a href="#faculty-staff">Faculty & Staff</a></li>
+
+            <li><a href="uneswa-fm.html" data-page="uneswa-fm">UNESWA-FM</a></li>
+            <li><a href="#programs">Academic Programs</a></li>
+            <li><a href="#research">Research</a></li>
+            <li class="dropdown">
+                <a href="#">Student Resources</a>
+                <div class="dropdown-content">
+                    <a href="https://learn.uneswa.ac.sz/login/index.php" target="_blank">UNESWA E-Learning Portal</a>
+                    <a href="http://www.library.uneswa.ac.sz/" target="_blank">Library</a>
+                    <a href="https://kwmail.uneswa.ac.sz/" target="_blank">Email</a>
+                </div>
+            </li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Faculty of Humanities</h1>
+            <p>Fostering critical thinking, cultural understanding, and intellectual excellence across six dynamic departments at the University of Eswatini.</p>
+            <button class="cta-button" onclick="smoothScrollTo('departments')">Explore Our Departments</button>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <section id="departments" class="section">
+            <h2>Our Departments</h2>
+            <div class="departments-grid">
+                <div class="department-card" onclick="loadPage('acs')">
+                    <div class="department-header">
+                        <h3>Academic Communication Skills</h3>
+                    </div>
+                    <div class="department-body">
+                        <div class="staff-count">8 Faculty Members</div>
+                        <p>Developing essential communication competencies for academic and professional success across all disciplines.</p>
+                        <button class="department-button">Explore Department</button>
+                    </div>
+                </div>
+
+                <div class="department-card" onclick="loadPage('african-lang')">
+                    <div class="department-header">
+                        <h3>African Languages and Literature</h3>
+                    </div>
+                    <div class="department-body">
+                        <div class="staff-count">9 Faculty Members</div>
+                        <p>Preserving and promoting African linguistic heritage while advancing literary scholarship and cultural studies.</p>
+                        <button class="department-button">Explore Department</button>
+                    </div>
+                </div>
+
+                <div class="department-card" onclick="loadPage('english')">
+                    <div class="department-header">
+                        <h3>English Language and Literature</h3>
+                    </div>
+                    <div class="department-body">
+                        <div class="staff-count">7 Faculty Members</div>
+                        <p>Excellence in English studies, from language proficiency to literary analysis and creative writing.</p>
+                        <button class="department-button">Explore Department</button>
+                    </div>
+                </div>
+
+                <div class="department-card" onclick="loadPage('history')">
+                    <div class="department-header">
+                        <h3>History</h3>
+                    </div>
+                    <div class="department-body">
+                        <div class="staff-count">7 Faculty Members</div>
+                        <p>Exploring African and world history to understand past, present, and future societal developments.</p>
+                        <button class="department-button">Explore Department</button>
+                    </div>
+                </div>
+
+                <div class="department-card" onclick="loadPage('journalism')">
+                    <div class="department-header">
+                        <h3>Journalism and Mass Communication</h3>
+                    </div>
+                    <div class="department-body">
+                        <div class="staff-count">12 Faculty Members</div>
+                        <p>Training the next generation of media professionals in digital age journalism and strategic communication.</p>
+                        <button class="department-button">Explore Department</button>
+                    </div>
+                </div>
+
+                <div class="department-card" onclick="loadPage('theology')">
+                    <div class="department-header">
+                        <h3>Theology and Religious Studies</h3>
+                    </div>
+                    <div class="department-body">
+                        <div class="staff-count">5 Faculty Members</div>
+                        <p>Interfaith dialogue and theological scholarship promoting understanding across religious traditions.</p>
+                        <button class="department-button">Explore Department</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3 class="footer-title">Quick Links</h3>
+                <ul>
+                    <li><a href="/faculty">Home</a></li>
+                    <li><a href="#departments">Departments</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Contact Information</h3>
+                <p>University of Eswatini</p>
+                <p>Faculty of Humanities</p>
+                <p>Tel: +268 2517 0000</p>
+                <p>Email: humanities@uneswa.sz</p>
+            </div>
+            <div>
+                <h3 class="footer-title">Follow Us</h3>
+                <div class="social-icons">
+                    <div class="social-icon">FB</div>
+                    <div class="social-icon">TW</div>
+                    <div class="social-icon">IG</div>
+                    <div class="social-icon">LI</div>
+                </div>
+            </div>
+            <div class="newsletter">
+                <h3 class="footer-title">Stay Updated</h3>
+                <input type="email" placeholder="Enter your email">
+                <button class="cta-button">Subscribe to Newsletter</button>
+            </div>
+        </div>
+    </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
