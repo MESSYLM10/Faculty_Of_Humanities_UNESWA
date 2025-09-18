@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About UNESWA FM 88.2</title>
+    <style>
+        /* Enhanced Color Scheme - Brighter Community Radio Feel */
+        :root {
+            --primary: #d62828; /* Brighter red */
+            --primary-dark: #9d0208;
+            --secondary: #00c9a7; /* Brighter teal */
+            --accent: #ff9500; /* Brighter orange */
+            --accent-light: #ffb347;
+            --dark: #2d2d2d;
+            --darker: #1a1a1a;
+            --light: #f8f5f0;
+            --white: #ffffff;
+            --gradient-1: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            --gradient-2: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            --gradient-3: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--primary-dark) 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Nav Bar */
+        nav {
+            position: relative;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            background: rgba(var(--darker), 0.7); /* Adjust transparency for visual effect */
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+        }
+
+        nav li {
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav .active a {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: var(--primary-dark);
+            backdrop-filter: blur(10px);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1, h2 {
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            opacity: 0.9;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--accent);
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        li strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 3rem 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                padding: 0.5rem 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul class="nav-links">
+        <li><a href="uneswa-fm.html">Home</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h1>About UNESWA FM 88.2</h1>
+
+    <div class="content-section">
+        <h2>Our Story: A Voice for the UNESWA Community</h2>
+        <p>UNESWA FM 88.2 is a campus-based radio station committed to serving the University of Eswatini and the surrounding community. Our journey began with the vision of creating a dynamic platform for student expression, professional development, and community engagement.</p>
+
+        <p>On March 31, 2021, the station officially launched with the <strong>"American Voices"</strong> project, a two-year initiative supported by a generous grant of over **E280,000 (US$20,000)** from the U.S. Embassy. The project's primary goal was to equip students in the Department of Journalism and Mass Communication with practical broadcasting skills, fostering their ability to produce content and think critically. U.S. Ambassador Jeanne Maloney, who attended the launch, highlighted the program's role in providing a forum for young people to discuss issues of importance while offering a window into American culture and history.</p>
+
+        <p>The establishment of UNESWA FM was made possible through a broadcasting license from the Eswatini Communications Commission. This milestone was a collaborative effort, with support from key partners including the Eswatini Government's Ministry of ICT and UNESCO.</p>
+
+        <div class="image-container">
+
+        </div>
+    </div>
+
+    ---
+
+    <div class="content-section">
+        <h2>Our Mission</h2>
+        <p>Our mission is to <strong>educate, inform, and entertain</strong> our audience by delivering high-quality, relevant, and engaging content. We strive to:</p>
+        <ul>
+            <li><strong>Empower Student Voices:</strong> Provide a platform for students to share their perspectives, develop their skills, and contribute to the campus and national dialogue.</li>
+            <li><strong>Bridge the Community:</strong> Act as a vital link between the university and the wider community, facilitating the exchange of information and fostering a sense of shared identity.</li>
+            <li><strong>Promote Education and Dialogue:</strong> Broadcast programs that address educational, health, socio-economic, and cultural issues, encouraging critical thinking and informed discussion.</li>
+        </ul>
+    </div>
+
+    ---
+
+    <div class="content-section">
+        <h2>Our Core Values</h2>
+        <p>Our work is guided by the following core values:</p>
+        <ul>
+            <li><strong>Integrity:</strong> We are committed to honest and ethical broadcasting, ensuring our content is accurate, fair, and transparent.</li>
+            <li><strong>Creativity:</strong> We encourage innovation and originality in our programming, providing a space for new ideas and diverse formats.</li>
+            <li><strong>Excellence:</strong> We hold ourselves to high professional standards in production and delivery, striving for broadcast quality that reflects our dedication to our craft.</li>
+            <li><strong>Community:</strong> We are deeply connected to our audience, prioritizing their needs and interests in everything we do.</li>
+            <li><strong>Empowerment:</strong> We believe in the power of media to uplift and inspire, and we are dedicated to using our platform to empower our students and our listeners.</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

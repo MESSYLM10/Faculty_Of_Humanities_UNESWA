@@ -577,20 +577,12 @@ nav a:hover {
 </style>
     </head>
 <body>
-    <div class="top-bar">
-         <div class="logo-container">
-            <img src="UNESWA_FM_LOGO.jpeg" alt="UNESWA_FM Logo">
-        </div>
-        <div class="weather-container" id="weather">
-            <h2>Manzini</h2>
-            <img id="weather-icon" class="weather-icon" src="" alt="Weather Icon">
-            <p id="temperature">Loading...</p>
-        </div>
 
-    </div>
 
     <header>
-
+<div class="logo-container">
+            <img src="UNESWA_FM_LOGO.jpeg" alt="UNESWA_FM Logo">
+        </div>
     <button class="fas fa-bars menu-toggle">☰ </button>
 
         <div class="header-title">
@@ -598,365 +590,7 @@ nav a:hover {
             <h2>Department of Journalism and Mass Communication</h2>
         </div>
     </header>
-    <!-- Ad Carousel Component for UNESWA FM -->
-<section class="ad-carousel-section">
-    <div class="container">
-        <div class="ad-carousel-header">
-            <h3><i class="fas fa-bullhorn"></i> Our Partners</h3>
-            <p>Supporting Campus Community</p>
-        </div>
 
-        <div class="ad-carousel">
-            <div class="ad-track" id="adTrack">
-                <!-- Ad 1 -->
-                <div class="ad-slide">
-                    <div class="ad-content">
-                        <div class="ad-visual">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <div class="ad-info">
-                            <h4>UNESWA Bookstore</h4>
-                            <p>All your academic needs in one place</p>
-                            <div class="ad-cta">Visit Now</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ad 2 -->
-                <div class="ad-slide">
-                    <div class="ad-content">
-                        <div class="ad-visual">
-                            <i class="fas fa-coffee"></i>
-                        </div>
-                        <div class="ad-info">
-                            <h4>Campus Café</h4>
-                            <p>Fresh coffee & study-friendly atmosphere</p>
-                            <div class="ad-cta">Order Online</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ad 3 -->
-                <div class="ad-slide">
-                    <div class="ad-content">
-                        <div class="ad-visual">
-                            <i class="fas fa-wifi"></i>
-                        </div>
-                        <div class="ad-info">
-                            <h4>MTN Eswatini</h4>
-                            <p>Student data bundles & connectivity</p>
-                            <div class="ad-cta">Get Connected</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ad 4 -->
-                <div class="ad-slide">
-                    <div class="ad-content">
-                        <div class="ad-visual">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="ad-info">
-                            <h4>Study Abroad Program</h4>
-                            <p>Expand your horizons with international exchange</p>
-                            <div class="ad-cta">Learn More</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ad 5 -->
-                <div class="ad-slide">
-                    <div class="ad-content">
-                        <div class="ad-visual">
-                            <i class="fas fa-dumbbell"></i>
-                        </div>
-                        <div class="ad-info">
-                            <h4>Campus Fitness Center</h4>
-                            <p>Stay fit with student-friendly rates</p>
-                            <div class="ad-cta">Join Today</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ad 6 -->
-                <div class="ad-slide">
-                    <div class="ad-content">
-                        <div class="ad-visual">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div class="ad-info">
-                            <h4>Tech Training Hub</h4>
-                            <p>Coding bootcamps & digital skills</p>
-                            <div class="ad-cta">Enroll Now</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation Dots -->
-            <div class="carousel-dots" id="carouselDots"></div>
-
-            <!-- Navigation Arrows -->
-            <button class="carousel-btn carousel-prev" id="prevBtn">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="carousel-btn carousel-next" id="nextBtn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-    </div>
-</section>
-
-<style>
-/* Ad Carousel Styles */
-.ad-carousel-section {
-    background: rgba(155, 34, 38, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 3rem 0;
-    margin: 2rem 0;
-    border-radius: 1rem;
-    border: 1px solid rgba(155, 34, 38, 0.2);
-}
-
-.ad-carousel-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.ad-carousel-header h3 {
-    color: var(--accent);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-.ad-carousel-header p {
-    color: var(--light);
-    opacity: 0.8;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.ad-carousel {
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 1rem;
-}
-
-.ad-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    gap: 1rem;
-}
-
-.ad-slide {
-    min-width: 300px;
-    flex-shrink: 0;
-    background: linear-gradient(135deg, rgba(214, 40, 40, 0.8), rgba(255, 149, 0, 0.6));
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
-}
-
-.ad-slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-.ad-slide:hover::before {
-    left: 100%;
-}
-
-.ad-slide:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-    box-shadow: 0 10px 25px rgba(255, 149, 0, 0.3);
-}
-
-.ad-content {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    position: relative;
-    z-index: 2;
-}
-
-.ad-visual {
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: var(--light);
-    flex-shrink: 0;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.ad-info {
-    flex: 1;
-}
-
-.ad-info h4 {
-    color: var(--light);
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-    font-weight: bold;
-}
-
-.ad-info p {
-    color: var(--light);
-    opacity: 0.9;
-    font-size: 0.85rem;
-    margin-bottom: 0.8rem;
-    line-height: 1.4;
-}
-
-.ad-cta {
-    background: rgba(255, 255, 255, 0.9);
-    color: var(--primary);
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    display: inline-block;
-    transition: all 0.3s ease;
-}
-
-.ad-slide:hover .ad-cta {
-    background: var(--light);
-    transform: scale(1.05);
-}
-
-/* Navigation Buttons */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 149, 0, 0.8);
-    color: var(--light);
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.carousel-btn:hover {
-    background: var(--accent);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 5px 15px rgba(255, 149, 0, 0.4);
-}
-
-.carousel-prev {
-    left: 10px;
-}
-
-.carousel-next {
-    right: 10px;
-}
-
-/* Navigation Dots */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dot.active {
-    background: var(--accent);
-    transform: scale(1.2);
-}
-
-.dot:hover {
-    background: rgba(255, 149, 0, 0.7);
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .ad-slide {
-        min-width: 280px;
-        padding: 1rem;
-    }
-
-    .ad-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.8rem;
-    }
-
-    .ad-visual {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-    }
-
-    .carousel-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 0.8rem;
-    }
-
-    .carousel-prev {
-        left: 5px;
-    }
-
-    .carousel-next {
-        right: 5px;
-    }
-}
-
-/* Auto-scroll animation */
-@keyframes slideShow {
-    0% { transform: translateX(0); }
-    16.66% { transform: translateX(0); }
-    33.33% { transform: translateX(-320px); }
-    50% { transform: translateX(-640px); }
-    66.66% { transform: translateX(-960px); }
-    83.33% { transform: translateX(-1280px); }
-    100% { transform: translateX(-1600px); }
-}
-
-.ad-track.auto-scroll {
-    animation: slideShow 18s infinite;
-}
-</style>
 
 
 
@@ -966,8 +600,9 @@ nav a:hover {
             <li class="active"><a href="Uneswa.html" data-page="faculty">Home</a></li>
             <li><a href="journalism.html">About Faculty</a></li>
             <li><a href="presenters.html">Meet Our Team</a></li>
+                <li><a href="online_news.html">News</a></li>
 
-            
+            <li><a href="about.html">About Us</a></li>
             <li><a href="#contact">Contact Us</a></li>
         </ul>
     </nav>
@@ -1128,149 +763,79 @@ nav a:hover {
   <script src="script.js" defer></script>
 
 <script>
-// Ad Carousel JavaScript
-class AdCarousel {
+    // Add this to your existing script section
+class UneswaFMAPI {
     constructor() {
-        this.track = document.getElementById('adTrack');
-        this.prevBtn = document.getElementById('prevBtn');
-        this.nextBtn = document.getElementById('nextBtn');
-        this.dotsContainer = document.getElementById('carouselDots');
-        this.slides = document.querySelectorAll('.ad-slide');
-        this.currentIndex = 0;
-        this.slideWidth = 320; // Including gap
-        this.autoScrollInterval = null;
-        this.isAutoScrolling = true;
-
-        this.init();
+        this.baseURL = 'https://your-backend-url.railway.app'; // Change this
     }
 
-    init() {
-        this.createDots();
-        this.bindEvents();
-        this.startAutoScroll();
-        this.updateCarousel();
-    }
-
-    createDots() {
-        for (let i = 0; i < this.slides.length; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => this.goToSlide(i));
-            this.dotsContainer.appendChild(dot);
+    async fetchPrograms() {
+        try {
+            const response = await fetch(`${this.baseURL}/api/programs`);
+            return await response.json();
+        } catch (error) {
+            console.error('Failed to fetch programs:', error);
+            return [];
         }
     }
 
-    bindEvents() {
-        this.prevBtn.addEventListener('click', () => {
-            this.stopAutoScroll();
-            this.prevSlide();
-        });
-
-        this.nextBtn.addEventListener('click', () => {
-            this.stopAutoScroll();
-            this.nextSlide();
-        });
-
-        // Pause auto-scroll on hover
-        this.track.addEventListener('mouseenter', () => {
-            this.stopAutoScroll();
-        });
-
-        this.track.addEventListener('mouseleave', () => {
-            this.startAutoScroll();
-        });
-
-        // Add click events to ads
-        this.slides.forEach((slide, index) => {
-            slide.addEventListener('click', () => {
-                this.handleAdClick(index);
-            });
-        });
-    }
-
-    updateCarousel() {
-        // Calculate the offset to center multiple slides
-        const containerWidth = this.track.parentElement.offsetWidth;
-        const visibleSlides = Math.floor(containerWidth / this.slideWidth);
-        const offset = Math.max(0, (containerWidth - (visibleSlides * this.slideWidth)) / 2);
-
-        this.track.style.transform = `translateX(${offset - (this.currentIndex * this.slideWidth)}px)`;
-
-        this.updateDots();
-    }
-
-    updateDots() {
-        const dots = this.dotsContainer.querySelectorAll('.dot');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === this.currentIndex);
-        });
-    }
-
-    nextSlide() {
-        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
-        this.updateCarousel();
-    }
-
-    prevSlide() {
-        this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-        this.updateCarousel();
-    }
-
-    goToSlide(index) {
-        this.stopAutoScroll();
-        this.currentIndex = index;
-        this.updateCarousel();
-    }
-
-    startAutoScroll() {
-        if (this.autoScrollInterval) return;
-
-        this.autoScrollInterval = setInterval(() => {
-            this.nextSlide();
-        }, 3000); // Change slide every 3 seconds
-    }
-
-    stopAutoScroll() {
-        if (this.autoScrollInterval) {
-            clearInterval(this.autoScrollInterval);
-            this.autoScrollInterval = null;
+    async fetchNews() {
+        try {
+            const response = await fetch(`${this.baseURL}/api/news`);
+            return await response.json();
+        } catch (error) {
+            console.error('Failed to fetch news:', error);
+            return [];
         }
     }
 
-    handleAdClick(index) {
-        // Handle ad click events
-        const adTitles = [
-            'UNESWA Bookstore',
-            'Campus Café',
-            'MTN Eswatini',
-            'Study Abroad Program',
-            'Campus Fitness Center',
-            'Tech Training Hub'
-        ];
+    // Add similar methods for schedule, presenters, etc.
+}
 
-        console.log(`Clicked on: ${adTitles[index]}`);
+// Initialize and load dynamic content
+const api = new UneswaFMAPI();
 
-        // Add click tracking or redirect logic here
-        // Example: window.open('https://advertiser-url.com', '_blank');
+async function loadDynamicContent() {
+    // Load programs
+    const programs = await api.fetchPrograms();
+    updateProgramsSection(programs);
 
-        // For demo purposes, show an alert
-        alert(`Redirecting to ${adTitles[index]}...`);
+    // Load news
+    const news = await api.fetchNews();
+    updateNewsStrip(news);
+
+    // Continue for other sections...
+}
+
+function updateNewsStrip(newsItems) {
+    const newsContainer = document.querySelector('.news-items');
+    if (newsItems.length > 0) {
+        newsContainer.innerHTML = newsItems
+            .map(item => `<p>${item.title} - ${item.content}</p>`)
+            .join('');
     }
 }
 
-// Initialize carousel when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new AdCarousel();
-});
+function updateProgramsSection(programs) {
+    const programsContainer = document.querySelector('.stations');
+    if (programs.length > 0) {
+        const programsHTML = programs.map(program => `
+            <div class="station-card">
+                <h3>${program.name}</h3>
+                <p>${program.description}</p>
+                <small>${program.start_time} - ${program.end_time}</small>
+            </div>
+        `).join('');
 
-// Handle window resize
-window.addEventListener('resize', () => {
-    // Reinitialize carousel on window resize for responsive behavior
-    setTimeout(() => {
-        const carousel = new AdCarousel();
-    }, 100);
-});
+        programsContainer.innerHTML = `<h2><i class="fas fa-list"></i> Programs</h2>${programsHTML}`;
+    }
+}
+
+// Load content when page loads
+document.addEventListener('DOMContentLoaded', loadDynamicContent);
+
+// Refresh content every 5 minutes
+setInterval(loadDynamicContent, 300000);
 </script>
 </body>
 </html>

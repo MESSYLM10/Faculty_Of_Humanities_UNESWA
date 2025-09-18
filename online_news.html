@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNESWA FM | News & Announcements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Shared Styles from other pages */
+        :root {
+            --primary: #d62828;
+            --primary-dark: #9d0208;
+            --secondary: #00c9a7;
+            --accent: #ff9500;
+            --accent-light: #ffb347;
+            --dark: #2d2d2d;
+            --darker: #1a1a1a;
+            --light: #f8f5f0;
+            --white: #ffffff;
+            --gradient-1: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--primary-dark) 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Nav Bar */
+        nav {
+            position: relative;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            background: rgba(var(--darker), 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+        }
+
+        nav li {
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav .active a {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* News Page Specific Styles */
+        .news-header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .ticker {
+            background-color: rgba(var(--primary-dark), 0.8);
+            color: var(--light);
+            padding: 0.5rem 1rem;
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ticker span {
+            display: inline-block;
+            padding-right: 2rem;
+            animation: scroll-left 15s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .news-card .content {
+            padding: 1.5rem;
+            color: var(--light);
+        }
+
+        .news-card h2 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin: 0 0 0.5rem;
+        }
+
+        .news-card p {
+            font-size: 0.95rem;
+            color: var(--light);
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+
+        .news-card .meta {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        footer {
+            background: rgba(var(--darker), 0.7);
+            color: var(--light);
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .news-header {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                padding: 0.5rem 0;
+            }
+
+            .news-card .content {
+                padding: 1rem;
+            }
+
+            .news-card h2 {
+                font-size: 1.2rem;
+            }
+
+            .news-card p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="news-header">UNESWA FM Online News</header>
+
+<nav>
+    <ul class="nav-links">
+        <li><a href="uneswa-fm.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+    </ul>
+</nav>
+
+<div class="ticker">
+    <span>Breaking: UNESWA FM announces new digital initiatives for campus community — stay tuned for details...</span>
+</div>
+
+<main>
+    <section class="news-grid" id="news-grid">
+        <div style="text-align: center; padding: 2rem;">Loading news...</div>
+    </section>
+</main>
+
+<script>
+    async function loadNews() {
+        try {
+            const res = await fetch("http://localhost:8000/api/news");
+            if (!res.ok) {
+                throw new Error('Failed to fetch news data');
+            }
+            const items = await res.json();
+            const grid = document.getElementById("news-grid");
+
+            grid.innerHTML = ""; // Clear the loading message
+
+            if (items.length === 0) {
+                grid.innerHTML = "<p style='text-align: center; color: var(--light);'>No news items available at the moment.</p>";
+                return;
+            }
+
+            items.forEach(n => {
+                const card = document.createElement("article");
+                card.className = "news-card";
+                card.innerHTML = `
+                    <img src="${n.image_url || 'https://via.placeholder.com/600x400'}" alt="News Thumbnail">
+                    <div class="content">
+                        <h2>${n.title}</h2>
+                        <p>${n.content}</p>
+                        <div class="meta">Type: ${n.type} | Priority: ${n.priority}</div>
+                    </div>`;
+                grid.appendChild(card);
+            });
+        } catch (error) {
+            console.error("Error loading news:", error);
+            const grid = document.getElementById("news-grid");
+            grid.innerHTML = `<p style='text-align: center; color: var(--accent);'>Failed to load news. Please try again later.</p>`;
+        }
+    }
+
+    loadNews();
+</script>
+
+<footer>
+    © 2025 UNESWA FM 88.2 | All Rights Reserved
+</footer>
+
+</body>
+</html>
