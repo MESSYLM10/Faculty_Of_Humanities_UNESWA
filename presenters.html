@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Our Presenters - UNESWA FM 88.2</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Enhanced Color Scheme - Brighter Community Radio Feel */
+        :root {
+            --primary: #d62828; /* Brighter red */
+            --primary-dark: #9d0208;
+            --secondary: #00c9a7; /* Brighter teal */
+            --accent: #ff9500; /* Brighter orange */
+            --accent-light: #ffb347;
+            --dark: #2d2d2d;
+            --darker: #1a1a1a;
+            --light: #f8f5f0;
+            --white: #ffffff;
+            --gradient-1: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            --gradient-2: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            --gradient-3: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--primary-dark) 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-1);
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path d="M0,50 Q250,100 500,50 T1000,50 V100 H0 Z" fill="rgba(0,0,0,0.1)"/></svg>') repeat-x bottom;
+            background-size: 1000px 100px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .frequency-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Presenters Grid */
+        .presenters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0 4rem;
+        }
+
+        .presenter-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .presenter-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            animation: rotate 3s linear infinite;
+        }
+
+        .presenter-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .presenter-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(214, 40, 40, 0.3);
+            border-color: var(--accent);
+        }
+
+        .presenter-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+            position: relative;
+            z-index: 2;
+            border: 4px solid var(--accent);
+        }
+
+        .presenter-info {
+            position: relative;
+            z-index: 2;
+        }
+
+        .presenter-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .presenter-role {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .presenter-show {
+            background: var(--gradient-1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .presenter-bio {
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .presenter-schedule {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .schedule-time {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.2);
+            box-shadow: 0 5px 15px rgba(255, 149, 0, 0.4);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Join Team Section */
+        .join-section {
+            background: var(--gradient-2);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 4rem 0;
+        }
+
+        .join-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .join-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: var(--white);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animations */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .presenter-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .presenter-card:nth-child(2) { animation-delay: 0.1s; }
+        .presenter-card:nth-child(3) { animation-delay: 0.2s; }
+        .presenter-card:nth-child(4) { animation-delay: 0.3s; }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .presenters-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-radio"></i>
+                UNESWA FM 88.2
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="uneswa-fm.html">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Meet Our Presenters</h1>
+            <p>The voices that bring you the best in campus radio, music, and community connection</p>
+            <div class="frequency-badge">UNESWA FM 88.2 FM</div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="section-title">
+            <h2>Our Radio Family</h2>
+            <p>From breaking campus news to the latest hits, our talented presenters keep UNESWA connected and entertained around the clock.</p>
+        </section>
+
+        <div class="presenters-grid">
+            <div class="presenter-card">
+                <div class="presenter-avatar">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <div class="presenter-info">
+                    <h3 class="presenter-name">Thabo Mthembu</h3>
+                    <div class="presenter-role">Morning Drive Host</div>
+                    <div class="presenter-show">Wake Up UNESWA</div>
+                    <p class="presenter-bio">Starting your day with energy and the latest campus news. Thabo brings 5 years of radio experience and a passion for connecting with students.</p>
+                    <div class="presenter-schedule">
+                        <div class="schedule-time">Monday - Friday | 6:00 - 9:00 AM</div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="presenter-card">
+                <div class="presenter-avatar">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="presenter-info">
+                    <h3 class="presenter-name">Nomsa Dlamini</h3>
+                    <div class="presenter-role">Music Director</div>
+                    <div class="presenter-show">Campus Vibes</div>
+                    <p class="presenter-bio">Your soundtrack to student life. Nomsa curates the perfect mix of local and international hits that keep the campus moving.</p>
+                    <div class="presenter-schedule">
+                        <div class="schedule-time">Monday - Friday | 12:00 - 3:00 PM</div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="presenter-card">
+                <div class="presenter-avatar">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="presenter-info">
+                    <h3 class="presenter-name">Dr. Sipho Nkomo</h3>
+                    <div class="presenter-role">Academic Host</div>
+                    <div class="presenter-show">Academic Spotlight</div>
+                    <p class="presenter-bio">Bringing you in-depth discussions on research, academia, and educational opportunities. Faculty interviews and student success stories.</p>
+                    <div class="presenter-schedule">
+                        <div class="schedule-time">Tuesday & Thursday | 8:00 - 10:00 AM</div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="presenter-card">
+                <div class="presenter-avatar">
+                    <i class="fas fa-headphones"></i>
+                </div>
+                <div class="presenter-info">
+                    <h3 class="presenter-name">Sindi Maseko</h3>
+                    <div class="presenter-role">Night Show Host</div>
+                    <div class="presenter-show">After Dark</div>
+                    <p class="presenter-bio">When the sun goes down, the real conversations begin. Late-night talks, chill music, and connecting with night owls across campus.</p>
+                    <div class="presenter-schedule">
+                        <div class="schedule-time">Sunday - Thursday | 9:00 PM - 12:00 AM</div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="presenter-card">
+                <div class="presenter-avatar">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="presenter-info">
+                    <h3 class="presenter-name">Mandla Zwane</h3>
+                    <div class="presenter-role">News Director</div>
+                    <div class="presenter-show">Campus News Update</div>
+                    <p class="presenter-bio">Keeping UNESWA informed with the latest campus news, events, and important announcements. Your trusted source for what's happening.</p>
+                    <div class="presenter-schedule">
+                        <div class="schedule-time">Daily | Multiple News Slots</div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fas fa-rss"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="presenter-card">
+                <div class="presenter-avatar">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <div class="presenter-info">
+                    <h3 class="presenter-name">Bongani Shongwe</h3>
+                    <div class="presenter-role">Sports Presenter</div>
+                    <div class="presenter-show">Sports Central</div>
+                    <p class="presenter-bio">From campus sports to international leagues, Bongani brings you all the action with expert analysis and passionate commentary.</p>
+                    <div class="presenter-schedule">
+                        <div class="schedule-time">Saturday & Sunday | 4:00 - 6:00 PM</div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <div class="stat-label">Talented Presenters</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <div class="stat-label">On Air</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5000+</span>
+                    <div class="stat-label">Daily Listeners</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <div class="stat-label">Shows Per Week</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="join-section">
+            <h3>Want to Join Our Team?</h3>
+            <p>UNESWA FM is always looking for passionate individuals to join our radio family. Whether you're interested in presenting, production, or behind-the-scenes work, we'd love to hear from you.</p>
+            <a href="#contact" class="cta-button">Apply Now</a>
+        </section>
+    </div>
+
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation trigger on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.presenter-card').forEach(card => {
+            card.style.animationPlayState = 'paused';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

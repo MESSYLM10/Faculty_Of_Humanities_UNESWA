@@ -481,6 +481,12 @@ nav a:hover {
         gap: 1.5rem;
     }
 
+    .logo-container img {
+        height: 40px; /* Smaller for mobile */
+        width: auto;
+        max-width: 80px;
+    }
+
     header {
         flex-direction: column;
         align-items: center;
@@ -492,8 +498,15 @@ nav a:hover {
     }
 
     .top-bar {
-        flex-direction: column;
-        gap: 1rem;
+        flex-direction: row; /* Changed back to row for side-by-side */
+        justify-content: flex-start; /* Align items to the left */
+        align-items: center;
+        gap: 1rem; /* Space between logo and weather */
+        flex-wrap: wrap; /* Allow wrapping if needed */
+    }
+
+    .weather-container {
+        margin-left: 0; /* Remove any auto margin */
     }
 
     /* Mobile Navigation */
@@ -504,15 +517,15 @@ nav a:hover {
         right: 20px;
     }
 
+    /* Rest of your mobile nav styles remain the same */
     nav {
-        /* This is the key change to make the menu overlay the header */
-        position: fixed; 
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.9); /* Dark overlay */
-        display: none; /* Hide by default */
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
         z-index: 1000;
         transition: all 0.3s ease;
     }
@@ -526,25 +539,24 @@ nav a:hover {
     nav ul {
         flex-direction: column;
         width: 70%;
-        padding: 2rem; /* Spacing between menu items */
+        padding: 2rem;
         background: var(--primary-dark);
         border-radius: 1rem;
         border: none;
         box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
-    
+
     nav ul li {
         width: 100%;
         text-align: center;
-        padding: 1rem 0; /* Add vertical spacing here */
+        padding: 1rem 0;
     }
 
     nav ul li a {
         padding: 15px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
-    /* Corrected dropdown for mobile */
+
     .dropdown-content {
         position: static;
         width: 100%;
@@ -558,40 +570,394 @@ nav a:hover {
     .dropdown-content a {
         padding-left: 30px;
     }
-    
-    /* Search Input Fix */
-    .search input {
-        min-width: 150px;
-    }
+
+
 }
+
 </style>
     </head>
 <body>
     <div class="top-bar">
+         <div class="logo-container">
+            <img src="UNESWA_FM_LOGO.jpeg" alt="UNESWA_FM Logo">
+        </div>
         <div class="weather-container" id="weather">
             <h2>Manzini</h2>
             <img id="weather-icon" class="weather-icon" src="" alt="Weather Icon">
             <p id="temperature">Loading...</p>
         </div>
-        <div class="search">
-            <form action="https://www.google.com/search" method="get">
-                <input type="search" name="q" placeholder="Search...">
-                <button type="submit">Search</button>
-            </form>
-        </div>
+
     </div>
 
     <header>
 
     <button class="fas fa-bars menu-toggle">☰ </button>
-        <div class="logo-container">
-            <img src="University_of_Eswatini_logo.svg" alt="University of Eswatini Logo">
-        </div>
+
         <div class="header-title">
-            <h1>University of Eswatini</h1>
+            <h1>UNESWA FM</h1>
             <h2>Department of Journalism and Mass Communication</h2>
         </div>
     </header>
+    <!-- Ad Carousel Component for UNESWA FM -->
+<section class="ad-carousel-section">
+    <div class="container">
+        <div class="ad-carousel-header">
+            <h3><i class="fas fa-bullhorn"></i> Our Partners</h3>
+            <p>Supporting Campus Community</p>
+        </div>
+
+        <div class="ad-carousel">
+            <div class="ad-track" id="adTrack">
+                <!-- Ad 1 -->
+                <div class="ad-slide">
+                    <div class="ad-content">
+                        <div class="ad-visual">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="ad-info">
+                            <h4>UNESWA Bookstore</h4>
+                            <p>All your academic needs in one place</p>
+                            <div class="ad-cta">Visit Now</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad 2 -->
+                <div class="ad-slide">
+                    <div class="ad-content">
+                        <div class="ad-visual">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <div class="ad-info">
+                            <h4>Campus Café</h4>
+                            <p>Fresh coffee & study-friendly atmosphere</p>
+                            <div class="ad-cta">Order Online</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad 3 -->
+                <div class="ad-slide">
+                    <div class="ad-content">
+                        <div class="ad-visual">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div class="ad-info">
+                            <h4>MTN Eswatini</h4>
+                            <p>Student data bundles & connectivity</p>
+                            <div class="ad-cta">Get Connected</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad 4 -->
+                <div class="ad-slide">
+                    <div class="ad-content">
+                        <div class="ad-visual">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="ad-info">
+                            <h4>Study Abroad Program</h4>
+                            <p>Expand your horizons with international exchange</p>
+                            <div class="ad-cta">Learn More</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad 5 -->
+                <div class="ad-slide">
+                    <div class="ad-content">
+                        <div class="ad-visual">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="ad-info">
+                            <h4>Campus Fitness Center</h4>
+                            <p>Stay fit with student-friendly rates</p>
+                            <div class="ad-cta">Join Today</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad 6 -->
+                <div class="ad-slide">
+                    <div class="ad-content">
+                        <div class="ad-visual">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="ad-info">
+                            <h4>Tech Training Hub</h4>
+                            <p>Coding bootcamps & digital skills</p>
+                            <div class="ad-cta">Enroll Now</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Dots -->
+            <div class="carousel-dots" id="carouselDots"></div>
+
+            <!-- Navigation Arrows -->
+            <button class="carousel-btn carousel-prev" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn carousel-next" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Ad Carousel Styles */
+.ad-carousel-section {
+    background: rgba(155, 34, 38, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 3rem 0;
+    margin: 2rem 0;
+    border-radius: 1rem;
+    border: 1px solid rgba(155, 34, 38, 0.2);
+}
+
+.ad-carousel-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.ad-carousel-header h3 {
+    color: var(--accent);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.ad-carousel-header p {
+    color: var(--light);
+    opacity: 0.8;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ad-carousel {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+}
+
+.ad-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 1rem;
+}
+
+.ad-slide {
+    min-width: 300px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(214, 40, 40, 0.8), rgba(255, 149, 0, 0.6));
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.ad-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.ad-slide:hover::before {
+    left: 100%;
+}
+
+.ad-slide:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 25px rgba(255, 149, 0, 0.3);
+}
+
+.ad-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.ad-visual {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--light);
+    flex-shrink: 0;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.ad-info {
+    flex: 1;
+}
+
+.ad-info h4 {
+    color: var(--light);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+.ad-info p {
+    color: var(--light);
+    opacity: 0.9;
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+.ad-cta {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.ad-slide:hover .ad-cta {
+    background: var(--light);
+    transform: scale(1.05);
+}
+
+/* Navigation Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 149, 0, 0.8);
+    color: var(--light);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: var(--accent);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 149, 0, 0.4);
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+/* Navigation Dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--accent);
+    transform: scale(1.2);
+}
+
+.dot:hover {
+    background: rgba(255, 149, 0, 0.7);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .ad-slide {
+        min-width: 280px;
+        padding: 1rem;
+    }
+
+    .ad-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    .ad-visual {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+    }
+
+    .carousel-prev {
+        left: 5px;
+    }
+
+    .carousel-next {
+        right: 5px;
+    }
+}
+
+/* Auto-scroll animation */
+@keyframes slideShow {
+    0% { transform: translateX(0); }
+    16.66% { transform: translateX(0); }
+    33.33% { transform: translateX(-320px); }
+    50% { transform: translateX(-640px); }
+    66.66% { transform: translateX(-960px); }
+    83.33% { transform: translateX(-1280px); }
+    100% { transform: translateX(-1600px); }
+}
+
+.ad-track.auto-scroll {
+    animation: slideShow 18s infinite;
+}
+</style>
+
 
 
 
@@ -599,6 +965,8 @@ nav a:hover {
         <ul class="nav-links">
             <li class="active"><a href="Uneswa.html" data-page="faculty">Home</a></li>
             <li><a href="journalism.html">About Faculty</a></li>
+            <li><a href="presenters.html">Meet Our Team</a></li>
+
             
             <li><a href="#contact">Contact Us</a></li>
         </ul>
@@ -737,9 +1105,9 @@ nav a:hover {
                     <div class="social-media">
                         <h3>Follow Us</h3>
                         <div class="social-icons">
-                            <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.facebook.com/RadioUneswa/&ved=2ahUKEwjd6f_zpo6KAxWkWUEAHXwUBGQQFnoECB8QAQ&usg=AOvVaw1DWDKdWpu1EP-1_m510nSC" class="social-icon">FB</a>
-                            <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://twitter.com/uneswafm&ved=2ahUKEwiUnZntqY6KAxWVVkEAHYQaMk4QFnoECBsQAQ&usg=AOvVaw2aLEL35nPOeHn59-u900Q6" class="social-icon">TW</a>
-                            <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.instagram.com/uneswafm/%3Fhl%3Den&ved=2ahUKEwiozKvDqY6KAxUZVkEAHa7VB14QFnoECBkQAQ&usg=AOvVaw00LutXkijvipGKiaznAKHU" class="social-icon">IG</a>
+                            <a href="https://www.facebook.com/search/top?q=uneswa%20fm" class="social-icon">FB</a>
+                            <a href="" class="social-icon">TW</a>
+                            <a href="https://www.instagram.com/uneswafm/?hl=en" class="social-icon">IG</a>
                             <div class="social-icon">YT</div>
                         </div>
                     </div>
@@ -758,5 +1126,151 @@ nav a:hover {
     </main>
 
   <script src="script.js" defer></script>
+
+<script>
+// Ad Carousel JavaScript
+class AdCarousel {
+    constructor() {
+        this.track = document.getElementById('adTrack');
+        this.prevBtn = document.getElementById('prevBtn');
+        this.nextBtn = document.getElementById('nextBtn');
+        this.dotsContainer = document.getElementById('carouselDots');
+        this.slides = document.querySelectorAll('.ad-slide');
+        this.currentIndex = 0;
+        this.slideWidth = 320; // Including gap
+        this.autoScrollInterval = null;
+        this.isAutoScrolling = true;
+
+        this.init();
+    }
+
+    init() {
+        this.createDots();
+        this.bindEvents();
+        this.startAutoScroll();
+        this.updateCarousel();
+    }
+
+    createDots() {
+        for (let i = 0; i < this.slides.length; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => this.goToSlide(i));
+            this.dotsContainer.appendChild(dot);
+        }
+    }
+
+    bindEvents() {
+        this.prevBtn.addEventListener('click', () => {
+            this.stopAutoScroll();
+            this.prevSlide();
+        });
+
+        this.nextBtn.addEventListener('click', () => {
+            this.stopAutoScroll();
+            this.nextSlide();
+        });
+
+        // Pause auto-scroll on hover
+        this.track.addEventListener('mouseenter', () => {
+            this.stopAutoScroll();
+        });
+
+        this.track.addEventListener('mouseleave', () => {
+            this.startAutoScroll();
+        });
+
+        // Add click events to ads
+        this.slides.forEach((slide, index) => {
+            slide.addEventListener('click', () => {
+                this.handleAdClick(index);
+            });
+        });
+    }
+
+    updateCarousel() {
+        // Calculate the offset to center multiple slides
+        const containerWidth = this.track.parentElement.offsetWidth;
+        const visibleSlides = Math.floor(containerWidth / this.slideWidth);
+        const offset = Math.max(0, (containerWidth - (visibleSlides * this.slideWidth)) / 2);
+
+        this.track.style.transform = `translateX(${offset - (this.currentIndex * this.slideWidth)}px)`;
+
+        this.updateDots();
+    }
+
+    updateDots() {
+        const dots = this.dotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentIndex);
+        });
+    }
+
+    nextSlide() {
+        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+        this.updateCarousel();
+    }
+
+    prevSlide() {
+        this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+        this.updateCarousel();
+    }
+
+    goToSlide(index) {
+        this.stopAutoScroll();
+        this.currentIndex = index;
+        this.updateCarousel();
+    }
+
+    startAutoScroll() {
+        if (this.autoScrollInterval) return;
+
+        this.autoScrollInterval = setInterval(() => {
+            this.nextSlide();
+        }, 3000); // Change slide every 3 seconds
+    }
+
+    stopAutoScroll() {
+        if (this.autoScrollInterval) {
+            clearInterval(this.autoScrollInterval);
+            this.autoScrollInterval = null;
+        }
+    }
+
+    handleAdClick(index) {
+        // Handle ad click events
+        const adTitles = [
+            'UNESWA Bookstore',
+            'Campus Café',
+            'MTN Eswatini',
+            'Study Abroad Program',
+            'Campus Fitness Center',
+            'Tech Training Hub'
+        ];
+
+        console.log(`Clicked on: ${adTitles[index]}`);
+
+        // Add click tracking or redirect logic here
+        // Example: window.open('https://advertiser-url.com', '_blank');
+
+        // For demo purposes, show an alert
+        alert(`Redirecting to ${adTitles[index]}...`);
+    }
+}
+
+// Initialize carousel when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new AdCarousel();
+});
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    // Reinitialize carousel on window resize for responsive behavior
+    setTimeout(() => {
+        const carousel = new AdCarousel();
+    }, 100);
+});
+</script>
 </body>
 </html>
